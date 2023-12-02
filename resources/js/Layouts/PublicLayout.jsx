@@ -24,11 +24,6 @@ export default function PublicLayout({ children }) {
                                    Inscribirse a Materias
                                </Link>
                            </li>
-                           <li className="nav-item">
-                               <Link href={route('login')} className="nav-link navbar-link text-dark">
-                                   Iniciar Sesión
-                               </Link>
-                           </li>
                        </ul>
                    </div>
                </div>
@@ -44,6 +39,9 @@ export default function PublicLayout({ children }) {
                            <div className="card-body h-100 p-5" style={{backgroundColor: '#2847a5'}}>
                                <h3 className="card-title text-white">EL INSTITUTO SUPERIOR 93 ASEGURA TU FUTURO</h3>
                                <p className="card-text text-white">En junio de 1993 se creó el instituto, una de las instituciones más emblemáticas de San Vicente.</p>
+                               <div className="text-center">
+                                <a href={route('inscripcion-carrera')} className="btn btn-warning w-50">Inscribite</a>
+                               </div>
                            </div>
                        </div>
                    </div>

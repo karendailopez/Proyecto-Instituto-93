@@ -22,7 +22,7 @@ return new class extends Migration
             $table->dateTime('fecha_nacimiento');
             $table->string('localidad_nacimiento', 15)->nullable();
             $table->string('pais_nacimiento', 50)->nullable();
-            $table->string('domicilio_calle', 255);
+            $table->string('domicilio_calle', 255)->nullable();
             $table->string('domicilio_altura', 10)->nullable();
             $table->string('domicilio_piso', 10)->nullable();
             $table->string('domicilio_departamento', 10)->nullable();

@@ -12,7 +12,6 @@ export default function Welcome({ auth }) {
     });
 
     $(document).ready(function() {
-
         $('.navbar-toggler').click(() => {
             $('.navbar-collapse').toggleClass('show');
         });
