@@ -7,9 +7,12 @@
             element.before(error);
         },
         rules: {
-            email: {
-                email: true
-            }
+            nombre: {maxlength: 50},
+            apellido: {maxlength: 50},
+            email: {email: true},
+            numero_documento: {maxlength: 8},
+            localidad_nacimiento: {maxlength: 50},
+            pais_nacimiento: {maxlength: 50},
         },
         onfocusout: function(element) {
             $(element).valid();

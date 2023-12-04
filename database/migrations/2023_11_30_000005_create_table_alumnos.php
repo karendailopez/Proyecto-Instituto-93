@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('estado_civil', 15)->nullable();
             $table->char('sexo', 1);
             $table->dateTime('fecha_nacimiento');
-            $table->string('localidad_nacimiento', 15)->nullable();
+            $table->string('localidad_nacimiento', 50)->nullable();
             $table->string('pais_nacimiento', 50)->nullable();
             $table->string('domicilio_calle', 255)->nullable();
             $table->string('domicilio_altura', 10)->nullable();

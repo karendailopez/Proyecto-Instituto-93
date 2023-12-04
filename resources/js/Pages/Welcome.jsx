@@ -1,6 +1,7 @@
 import { Link, Head } from '@inertiajs/react';
 import PublicLayout from "@/Layouts/PublicLayout.jsx";
-export default function Welcome({ auth }) {
+import Swal from "sweetalert2";
+export default function Welcome({ auth, message}) {
     $(window).scroll(function() {
         if ($(this).scrollTop() > 20) {
             $('.navbar').addClass('scrolled');
@@ -16,6 +17,14 @@ export default function Welcome({ auth }) {
             $('.navbar-collapse').toggleClass('show');
         });
     });
+
+    if(message) {
+        Swal.fire({
+            title: message['title'],
+            text: message['text'],
+            icon: "success"
+        });
+    }
 
     return (
         <>

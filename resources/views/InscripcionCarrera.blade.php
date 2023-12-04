@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/fonts/material-icon/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="/vendor/nouislider/nouislider.min.css">
     <!-- Main css -->
-    <link rel="stylesheet" href="/css/inscripcion.css">
+    <link rel="stylesheet" href="/css/inscripcion.css?v=2">
 </head>
 
 <body>
@@ -191,7 +191,7 @@
                         <div id="no_titulo_secundario_content" class="form-row hidden">
                             <div class="form-group">
                                 <input type="number" name="adeuda_materias" id="adeuda_materias"
-                                       placeholder="Materias Adeudadas" required />
+                                       placeholder="Cantidad de Materias Adeudadas" required />
                             </div>
                             <div class="form-group">
                                 <input type="text" name="adeuda_descripcion" id="adeuda_descripcion"
@@ -1081,6 +1081,6 @@
     <script src="/vendor/minimalist-picker/dobpicker.js"></script>
     <script src="/vendor/nouislider/nouislider.min.js"></script>
     <script src="/vendor/wnumb/wNumb.js"></script>
-    <script src="/js/inscripcion.js"></script>
+    <script src="/js/inscripcion.js?v=2"></script>
 </body>
 </html>

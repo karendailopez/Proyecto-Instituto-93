@@ -55,7 +55,16 @@ class Alumno extends Model
         'vacuna_antitetanica',
         'recibo',
         'monto',
+        'comprobante_url',
+        'email_encriptado',
+        'email_verificado',
         'foto_url',
         'active',
     ];
+
+    public static function getAlumnoPorEmail(string $email) {
+        return self::query()
+            ->where(['email_encriptado' => $email])
+            ->first();
+    }
 }
