@@ -1,20 +1,22 @@
-import { Link, Head } from '@inertiajs/react';
+import jQuery from 'jquery';
+import { Head } from '@inertiajs/react';
 import PublicLayout from "@/Layouts/PublicLayout.jsx";
+
 import Swal from "sweetalert2";
 export default function Welcome({ auth, message}) {
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > 20) {
-            $('.navbar').addClass('scrolled');
-            $('.navbar-link').addClass('a-scrolled');
+    jQuery(window).scroll(function() {
+        if (jQuery(this).scrollTop() > 20) {
+            jQuery('.navbar').addClass('scrolled');
+            jQuery('.navbar-link').addClass('a-scrolled');
         } else {
-            $('.navbar').removeClass('scrolled');
-            $('.navbar-link').removeClass('a-scrolled');
+            jQuery('.navbar').removeClass('scrolled');
+            jQuery('.navbar-link').removeClass('a-scrolled');
         }
     });
 
-    $(document).ready(function() {
-        $('.navbar-toggler').click(() => {
-            $('.navbar-collapse').toggleClass('show');
+    jQuery(document).ready(function() {
+        jQuery('.navbar-toggler').click(() => {
+            jQuery('.navbar-collapse').toggleClass('show');
         });
     });
 

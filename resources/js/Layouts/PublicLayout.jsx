@@ -1,7 +1,15 @@
+import 'jquery/dist/jquery.slim.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.js';
 import '../../css/public.css';
 import { Link } from '@inertiajs/react';
+import {useEffect} from "react";
 
 export default function PublicLayout({ children }) {
+    useEffect(() => {
+        document.body.classList.remove('main');
+    }, []);
+
     return (
        <>
            <nav className="navbar navbar-expand-lg navbar-dark">
@@ -30,13 +38,13 @@ export default function PublicLayout({ children }) {
            </nav>
 
            <div>
-               <div className="card mb-3" style={{width: '100%', height: '40vh'}}>
+               <div className="card mb-3" style={{width: '100%', minHeight: '40vh'}}>
                    <div className="row flex-row-reverse g-0">
-                       <div className="col-md-8" style={{height: '40vh'}}>
+                       <div className="col-md-8" style={{minHeight: '40vh'}}>
                            <img src="/storage/images/welcome/imgInsti.png" className="img-fluid w-100" alt="..."></img>
                        </div>
-                       <div className="col-md-4" style={{height: '40vh'}}>
-                           <div className="card-body h-100 p-5" style={{backgroundColor: '#2847a5'}}>
+                       <div className="col-md-4" style={{minHeight: '40vh'}}>
+                           <div className="card-body p-5" style={{backgroundColor: '#2847a5'}}>
                                <h3 className="card-title text-white">EL INSTITUTO SUPERIOR 93 ASEGURA TU FUTURO</h3>
                                <p className="card-text text-white">En junio de 1993 se creó el instituto, una de las instituciones más emblemáticas de San Vicente.</p>
                                <div className="text-center">
