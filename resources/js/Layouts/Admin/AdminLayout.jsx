@@ -1,7 +1,7 @@
 import '../../../css/admin.css';
 import {useEffect} from "react";
-import AppMobileMenu from "@/Components/Icons/AppMobileMenu.jsx";
-import AppMenu from "@/Components/Icons/AppMenu.jsx";
+import AppMobileMenu from "./Components/AppMobileMenu.jsx";
+import AppMenu from "./Components/AppMenu.jsx";
 import TopBar from "./Components/TopBar.jsx";
 
 export default function Admin({ children }) {

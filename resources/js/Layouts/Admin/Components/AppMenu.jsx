@@ -1,5 +1,6 @@
 import ApplicationLogo from "@/Components/ApplicationLogo.jsx";
 import AppIcon from "@/Components/Icons/AppIcon.jsx";
+import AppMenuItem from "./AppMenuItem.jsx";
 
 export default function AppMenu() {
     return <nav className="side-nav">
@@ -10,101 +11,7 @@ export default function AppMenu() {
         </a>
         <div className="side-nav__devider my-6"></div>
         <ul>
-            <li>
-                <a href="#.html" className="side-menu side-menu--active">
-                    <div className="side-menu__icon"> <AppIcon name="home"></AppIcon></div>
-                    <div className="side-menu__title">
-                        Dashboard
-                        <div className="side-menu__sub-icon transform rotate-180"> <AppIcon name="chevron-down"></AppIcon>
-                        </div>
-                    </div>
-                </a>
-                <ul className="side-menu__sub-open">
-                    <li>
-                        <a href="index.html" className="side-menu side-menu--active">
-                            <div className="side-menu__icon"><AppIcon name="activity"></AppIcon> </div>
-                            <div className="side-menu__title"> Overview 1</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="side-menu-light-dashboard-overview-2.html" className="side-menu">
-                            <div className="side-menu__icon"><AppIcon name="activity"></AppIcon></div>
-                            <div className="side-menu__title"> Overview 2</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="side-menu-light-dashboard-overview-3.html" className="side-menu">
-                            <div className="side-menu__icon"><AppIcon name="activity"></AppIcon></div>
-                            <div className="side-menu__title"> Overview 3</div>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" className="side-menu">
-                    <div className="side-menu__icon"><AppIcon name="box"></AppIcon></div>
-                    <div className="side-menu__title">
-                        Menu Layout
-                        <div className="side-menu__sub-icon "><AppIcon name="chevron-down"></AppIcon></div>
-                    </div>
-                </a>
-                <ul className="">
-                    <li>
-                        <a href="index.html" className="side-menu">
-                            <div className="side-menu__icon"><AppIcon name="activity"></AppIcon></div>
-                            <div className="side-menu__title"> Side Menu</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="simple-menu-light-dashboard-overview-1.html" className="side-menu">
-                            <div className="side-menu__icon"><AppIcon name="activity"></AppIcon></div>
-                            <div className="side-menu__title"> Simple Menu</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="top-menu-light-dashboard-overview-1.html" className="side-menu">
-                            <div className="side-menu__icon"><AppIcon name="activity"></AppIcon></div>
-                            <div className="side-menu__title"> Top Menu</div>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="side-menu-light-inbox.html" className="side-menu">
-                    <div className="side-menu__icon"><AppIcon name="inbox"></AppIcon></div>
-                    <div className="side-menu__title"> Inbox</div>
-                </a>
-            </li>
-            <li>
-                <a href="side-menu-light-file-manager.html" className="side-menu">
-                    <div className="side-menu__icon"><i data-feather="hard-drive"></i></div>
-                    <div className="side-menu__title"> File Manager</div>
-                </a>
-            </li>
-            <li>
-                <a href="side-menu-light-point-of-sale.html" className="side-menu">
-                    <div className="side-menu__icon"><i data-feather="credit-card"></i></div>
-                    <div className="side-menu__title"> Point of Sale</div>
-                </a>
-            </li>
-            <li>
-                <a href="side-menu-light-chat.html" className="side-menu">
-                    <div className="side-menu__icon"><i data-feather="message-square"></i></div>
-                    <div className="side-menu__title"> Chat</div>
-                </a>
-            </li>
-            <li>
-                <a href="side-menu-light-post.html" className="side-menu">
-                    <div className="side-menu__icon"><i data-feather="file-text"></i></div>
-                    <div className="side-menu__title"> Post</div>
-                </a>
-            </li>
-            <li>
-                <a href="side-menu-light-calendar.html" className="side-menu">
-                    <div className="side-menu__icon"><i data-feather="calendar"></i></div>
-                    <div className="side-menu__title"> Calendar</div>
-                </a>
-            </li>
+            <AppMenuItem title="Dashboard" icon="home" url="admin.dashboard.index" active={true} />
             <li className="side-nav__devider my-6"></li>
             <li>
                 <a href="#" className="side-menu">
