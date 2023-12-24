@@ -29,6 +29,7 @@ return new class extends Migration
             $table->integer('duracion');
             $table->unsignedBigInteger('carrera_estado_id');
             $table->boolean('active');
+            $table->boolean('mostrar_inscripcion');
             $table->timestamps();
 
             $table->foreign('carrera_estado_id')->references('id')->on('carrera_estados')->onDelete('CASCADE');

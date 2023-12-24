@@ -438,14 +438,14 @@ samp {
  *    CSS Remedy, with `svg` added as well.
  *
  *    https://github.com/mozdevs/cssremedy/issues/14
- * 
+ *
  * 2. Add `vertical-align: middle` to align replaced elements more
  *    sensibly by default when overriding `display` by adding a
  *    utility like `inline`.
  *
  *    This can trigger a poorly considered linting error in some
  *    tools but is included by design.
- * 
+ *
  *    https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210
  */
 img,
@@ -4410,7 +4410,7 @@ video {
 .login:before {
     content: "";
     margin-left: -48%;
-    background-image: url(../images/bg-login-page.svg);
+    background-image: url(/storage/images/bg-login-page.svg);
     background-repeat: no-repeat;
     background-size: auto 100%;
     background-position: right;
@@ -4435,7 +4435,7 @@ video {
 	}
   }
 .dark .login:before {
-    background-image: url(../images/bg-login-page-dark.svg);
+    background-image: url(/storage/images/bg-login-page.svg);
   }
 @media (max-width: 1279px) {
     .dark .login {
@@ -12902,7 +12902,7 @@ html body {
 .login:before {
   content: "";
   margin-left: -48%;
-  background-image: url(../images/bg-login-page.svg);
+  background-image: url(/storage/images/bg-login-page.svg);
   background-repeat: no-repeat;
   background-size: auto 100%;
   background-position: right;

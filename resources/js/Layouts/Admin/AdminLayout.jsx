@@ -7,6 +7,10 @@ import TopBar from "./Components/TopBar.jsx";
 export default function Admin({ children }) {
     useEffect(() => {
         document.body.classList.add('main');
+
+        return () => {
+            document.body.classList.remove('main');
+        }
     }, []);
 
     return <>
@@ -15,9 +19,8 @@ export default function Admin({ children }) {
             <AppMenu></AppMenu>
             <div className="content">
                 <TopBar></TopBar>
-                <div className="grid grid-cols-12 gap-6">
-                    {children}
-                </div>
+
+                {children}
             </div>
         </div>
     </>;

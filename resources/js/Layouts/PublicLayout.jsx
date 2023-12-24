@@ -44,7 +44,7 @@ export default function PublicLayout({ children }) {
                            <img src="/storage/images/welcome/imgInsti.png" className="img-fluid w-100" alt="..."></img>
                        </div>
                        <div className="col-md-4" style={{minHeight: '40vh'}}>
-                           <div className="card-body p-5" style={{backgroundColor: '#2847a5'}}>
+                           <div className="card-body p-5 h-100" style={{backgroundColor: '#2847a5'}}>
                                <h3 className="card-title text-white">EL INSTITUTO SUPERIOR 93 ASEGURA TU FUTURO</h3>
                                <p className="card-text text-white">En junio de 1993 se creó el instituto, una de las instituciones más emblemáticas de San Vicente.</p>
                                <div className="text-center">

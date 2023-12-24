@@ -26,11 +26,12 @@ class Carrera extends Model
         'duracion',
         'carrera_estado_id',
         'active',
+        'mostrar_inscripcion',
     ];
 
     public static function getCarreras() {
         return self::query()
-            ->where(['active' => true])
+            ->where(['active' => true, 'mostrar_inscripcion' => true])
             ->get();
     }
 }

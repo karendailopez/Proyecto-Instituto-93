@@ -43,7 +43,7 @@ export default function () {
                         <a href="" className="flex items-center mt-2">
                             <div className="w-8 h-8 image-fit">
                                 <img alt="Rubick Tailwind HTML Admin Template" className="rounded-full"
-                                     src="dist/images/profile-11.jpg"></img>
+                                     src="/storage/images/profile/default.jpg"></img>
                             </div>
                             <div className="ml-3">Kevin Spacey</div>
                             <div
@@ -53,7 +53,7 @@ export default function () {
                         <a href="" className="flex items-center mt-2">
                             <div className="w-8 h-8 image-fit">
                                 <img alt="Rubick Tailwind HTML Admin Template" className="rounded-full"
-                                     src="dist/images/profile-8.jpg"></img>
+                                     src="/storage/images/profile/default.jpg"></img>
                             </div>
                             <div className="ml-3">Al Pacino</div>
                             <div
@@ -63,7 +63,7 @@ export default function () {
                         <a href="" className="flex items-center mt-2">
                             <div className="w-8 h-8 image-fit">
                                 <img alt="Rubick Tailwind HTML Admin Template" className="rounded-full"
-                                     src="dist/images/profile-11.jpg"></img>
+                                     src="/storage/images/profile/default.jpg"></img>
                             </div>
                             <div className="ml-3">Kate Winslet</div>
                             <div
@@ -73,7 +73,7 @@ export default function () {
                         <a href="" className="flex items-center mt-2">
                             <div className="w-8 h-8 image-fit">
                                 <img alt="Rubick Tailwind HTML Admin Template" className="rounded-full"
-                                     src="dist/images/profile-14.jpg"></img>
+                                     src="/storage/images/profile/default.jpg"></img>
                             </div>
                             <div className="ml-3">Christian Bale</div>
                             <div
@@ -85,7 +85,7 @@ export default function () {
                     <a href="" className="flex items-center mt-2">
                         <div className="w-8 h-8 image-fit">
                             <img alt="Rubick Tailwind HTML Admin Template" className="rounded-full"
-                                 src="dist/images/preview-2.jpg"></img>
+                                 src="/storage/images/default.jpg"></img>
                         </div>
                         <div className="ml-3">Nike Air Max 270</div>
                         <div className="ml-auto w-48 truncate text-gray-600 text-xs text-right">Sport &amp; Outdoor
@@ -94,7 +94,7 @@ export default function () {
                     <a href="" className="flex items-center mt-2">
                         <div className="w-8 h-8 image-fit">
                             <img alt="Rubick Tailwind HTML Admin Template" className="rounded-full"
-                                 src="dist/images/preview-6.jpg"></img>
+                                 src="/storage/images/default.jpg"></img>
                         </div>
                         <div className="ml-3">Apple MacBook Pro 13</div>
                         <div className="ml-auto w-48 truncate text-gray-600 text-xs text-right">PC &amp; Laptop</div>
@@ -102,7 +102,7 @@ export default function () {
                     <a href="" className="flex items-center mt-2">
                         <div className="w-8 h-8 image-fit">
                             <img alt="Rubick Tailwind HTML Admin Template" className="rounded-full"
-                                 src="dist/images/preview-14.jpg"></img>
+                                 src="/storage/images/default.jpg"></img>
                         </div>
                         <div className="ml-3">Samsung Galaxy S20 Ultra</div>
                         <div
@@ -112,7 +112,7 @@ export default function () {
                     <a href="" className="flex items-center mt-2">
                         <div className="w-8 h-8 image-fit">
                             <img alt="Rubick Tailwind HTML Admin Template" className="rounded-full"
-                                 src="dist/images/preview-2.jpg"></img>
+                                 src="/storage/images/default.jpg"></img>
                         </div>
                         <div className="ml-3">Dell XPS 13</div>
                         <div className="ml-auto w-48 truncate text-gray-600 text-xs text-right">PC &amp; Laptop</div>
@@ -131,7 +131,7 @@ export default function () {
                     <div className="cursor-pointer relative flex items-center ">
                         <div className="w-12 h-12 flex-none image-fit mr-1">
                             <img alt="Rubick Tailwind HTML Admin Template" className="rounded-full"
-                                 src="dist/images/profile-11.jpg"></img>
+                                 src="/storage/images/profile/default.jpg"></img>
                             <div
                                 className="w-3 h-3 bg-theme-9 absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
                         </div>
@@ -149,7 +149,7 @@ export default function () {
                     <div className="cursor-pointer relative flex items-center mt-5">
                         <div className="w-12 h-12 flex-none image-fit mr-1">
                             <img alt="Rubick Tailwind HTML Admin Template" className="rounded-full"
-                                 src="dist/images/profile-8.jpg"></img>
+                                 src="/storage/images/profile/default.jpg"></img>
                             <div
                                 className="w-3 h-3 bg-theme-9 absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
                         </div>
@@ -167,7 +167,7 @@ export default function () {
                     <div className="cursor-pointer relative flex items-center mt-5">
                         <div className="w-12 h-12 flex-none image-fit mr-1">
                             <img alt="Rubick Tailwind HTML Admin Template" className="rounded-full"
-                                 src="dist/images/profile-11.jpg"></img>
+                                 src="/storage/images/profile/default.jpg"></img>
                             <div
                                 className="w-3 h-3 bg-theme-9 absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
                         </div>
@@ -185,7 +185,7 @@ export default function () {
                     <div className="cursor-pointer relative flex items-center mt-5">
                         <div className="w-12 h-12 flex-none image-fit mr-1">
                             <img alt="Rubick Tailwind HTML Admin Template" className="rounded-full"
-                                 src="dist/images/profile-14.jpg"></img>
+                                 src="/storage/images/profile/default.jpg"></img>
                             <div
                                 className="w-3 h-3 bg-theme-9 absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
                         </div>
@@ -203,7 +203,7 @@ export default function () {
                     <div className="cursor-pointer relative flex items-center mt-5">
                         <div className="w-12 h-12 flex-none image-fit mr-1">
                             <img alt="Rubick Tailwind HTML Admin Template" className="rounded-full"
-                                 src="dist/images/profile-5.jpg"></img>
+                                 src="/storage/images/profile/default.jpg"></img>
                             <div
                                 className="w-3 h-3 bg-theme-9 absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
                         </div>
@@ -224,7 +224,7 @@ export default function () {
         <div className="intro-x dropdown w-8 h-8">
             <div className="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in"
                  role="button" aria-expanded="false">
-                <img alt="Rubick Tailwind HTML Admin Template" src="dist/images/profile-11.jpg"></img>
+                <img alt="Rubick Tailwind HTML Admin Template" src="/storage/images/profile/default.jpg"></img>
             </div>
             <div className="dropdown-menu w-56">
                 <div className="dropdown-menu__content box bg-theme-26 dark:bg-dark-6 text-white">

@@ -3,7 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -21,6 +23,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'rol_id',
+        'email_verified_at'
     ];
 
     /**
@@ -42,4 +46,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function rol() : BelongsTo
+    {
+        return $this->belongsTo( Rol::class, 'rol_id' );
+    }
+
+    public static function porTipoUsuario($tipo_usuario_id) {
+        return self::query()
+            ->with('rol')
+            ->whereHas('rol', function (Builder $query) use ($tipo_usuario_id) {
+                return $query->where(['tipo_usuario_id' => $tipo_usuario_id]);
+            });
+    }
 }

@@ -1,10 +1,9 @@
 import AppIcon from "@/Components/Icons/AppIcon.jsx";
 import {useState} from "react";
+import {Link} from "@inertiajs/react";
 
 export default function AppMenuItem({title, url, icon, active, children}) {
     const [open, setOpen] = useState(active);
-
-    const activeClass = active ? 'side-menu--active' : '';
 
     const onClick = function (event) {
         if(children) {
@@ -15,7 +14,7 @@ export default function AppMenuItem({title, url, icon, active, children}) {
     }
 
     return <li>
-        <a href={route(url)} className={`side-menu ${activeClass}`} onClick={onClick}>
+        <Link href={route(url)} className={`side-menu ${ route().current(url) ? 'side-menu--active' : '' }`} onClick={onClick}>
             <div className="side-menu__icon"><AppIcon name={icon}></AppIcon></div>
             <div className="side-menu__title">
                 {title}
@@ -25,7 +24,7 @@ export default function AppMenuItem({title, url, icon, active, children}) {
                     </div>
                 )}
             </div>
-        </a>
+        </Link>
         {children && (
             <ul className={open ? 'side-menu__sub-open' : ''}>
                 {children}
