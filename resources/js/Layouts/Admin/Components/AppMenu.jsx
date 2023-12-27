@@ -9,9 +9,10 @@ export default function AppMenu() {
         </a>
         <div className="side-nav__devider my-6"></div>
         <ul>
-            <AppMenuItem title="Dashboard" icon="home" url="admin.dashboard.index" />
+            <AppMenuItem title="Dashboard" icon="home" url="admin.dashboard.index"/>
             <li className="side-nav__devider my-6"></li>
-            <AppMenuItem title="Usuarios" icon="users" url="admin.users.index" />
+            <AppMenuItem title="Usuarios" icon="users" url="admin.users.index"/>
+            <AppMenuItem title="Alumnos" icon="fa-graduation-cap" iconType="fa-solid" url="admin.alumnos.index"/>
         </ul>
     </nav>;
 }

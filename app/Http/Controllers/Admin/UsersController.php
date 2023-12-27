@@ -17,7 +17,7 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::porTipoUsuario(TipoUsuario::Administrador)->get();
+        $users = User::porTipoUsuario(TipoUsuario::Administrador)->paginate();
 
         return Inertia::render('Admin/Users/Index', compact('users'));
     }

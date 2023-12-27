@@ -1,38 +1,34 @@
 import AdminLayout from '@/Layouts/Admin/AdminLayout.jsx';
-import AppIcon from "@/Components/Icons/AppIcon.jsx";
 import Table from "@/Components/Table/Table.jsx";
 import {Head} from "@inertiajs/react";
-import DropdownButton from "@/Layouts/Admin/Components/DropdownButton.jsx";
-import DropdownButtonItem from "@/Layouts/Admin/Components/DropdownButtonItem.jsx";
+import PageTitle from "@/Layouts/Admin/Components/PageTitle.jsx";
 
-export default function Index({ users }) {
+export default function Index({ alumnos }) {
     const table = [
         { value: 'id',  label: 'X' },
-        { value: 'name',  label: 'Nombre' },
+        { value: 'nombre',  label: 'Nombre' },
+        { value: 'apellido',  label: 'Apellido' },
         { value: 'email',  label: 'Email' },
-        { value: 'rol.descripcion',  label: 'Rol' }
-    ]
+        { value: 'carrera',  label: 'Carrera' },
+    ];
+
+    alumnos.data = alumnos.data.map((x) => ({
+        ...x,
+        carrera: x.alumno_carreras?.length > 0 ? x.alumno_carreras[0].carrera.nombre : ''
+    }));
 
     return <AdminLayout>
-        <Head title="Usuarios"/>
+        <Head title="Alumnos"/>
 
-        <h2 className="intro-y text-lg font-medium mt-10">
-            Lista de Usuarios Administradores
-        </h2>
+        <PageTitle label="Lista de Alumnos" />
 
-        <Table head={table} rows={users} paginate={true}>
-            <a href={route('admin.users.create')} className="btn btn-primary shadow-md mr-2">Agregar nuevo</a>
-
-            <DropdownButton>
-                <DropdownButtonItem label="Imprimir" icon="printer"></DropdownButtonItem>
-            </DropdownButton>
-        </Table>
+        <Table head={table} rows={alumnos} paginate={true}></Table>
 
         <div id="delete-confirmation-modal" className="modal" tabIndex="-1" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-body p-0">
-                    <div className="p-5 text-center">
+                        <div className="p-5 text-center">
                             <i data-feather="x-circle" className="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
                             <div className="text-3xl mt-5">Are you sure?</div>
                             <div className="text-gray-600 mt-2">

@@ -1,57 +1,29 @@
 import Paginator from "@/Components/Table/Paginator.jsx";
+import Search from "@/Components/Table/Search.jsx";
+import TableHead from "@/Components/Table/TableHead.jsx";
+import TableBody from "@/Components/Table/TableBody.jsx";
 
-function getData(head, item) {
-    const p = head.value.split('.');
-    let value = null;
+export default function Table({ children, head, rows, paginate }) {
+    const rowsData = paginate ? rows.data : rows;
 
-    if(p.length > 0) {
-        let actual = item;
-
-        for(let i in p) {
-            let key = p[i];
-
-            if(i < (p.length - 1 )) {
-                actual = actual[key];
-            } else {
-                if(actual && actual.hasOwnProperty(key)) {
-                    value = actual[key];
-                } else {
-                    value = '';
-                }
-            }
-        }
-    }
-
-    if(head?.render) {
-        return head.render(value);
-    }
-
-    return value;
-}
-
-export default function Table({ head, rows }) {
-
-    const headHtml = head.map((x, i) => (<th className={`${x.className} whitespace-nowrap`} key={i}>{x.label}</th>));
-
-    const rowsHtml = rows?.length > 0 ? rows?.map( (x) => (<tr className="intro-x" key={x.id}>
-        {head.map( (y) => (<td key={y.value}><div className={y.classData}> {getData(y, x)} </div></td>))}
-        <td></td>
-    </tr>)) : (<tr><td colSpan={ head.length + 1 } className="text-center">No hay registros</td></tr>);
     return <>
-        <div className="intro-y col-span-12 overflow-auto lg:overflow-visible">
-            <table className="table table-report -mt-2">
-                <thead>
-                    <tr>
-                        {headHtml}
-                        <th className={`whitespace-nowrap`}>Accion</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {rowsHtml}
-                </tbody>
-            </table>
+        <div className="grid grid-cols-12 gap-6 mt-5">
+            <div className="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
+                { children }
+
+                { paginate && <div className="hidden md:block mx-auto text-gray-600">Showing { rows.from } to { rows.to } of { rows.total } entries</div>}
+
+                <Search path={rows.path}></Search>
+            </div>
+
+            <div className="intro-y col-span-12 overflow-auto lg:overflow-visible">
+                <table className="table table-report -mt-2">
+                    <TableHead head={head} options={rows}></TableHead>
+                    <TableBody head={head} data={rowsData}></TableBody>
+                </table>
+            </div>
         </div>
 
-        <Paginator></Paginator>
+        {paginate && <Paginator paginator={rows}></Paginator>}
     </>;
 }
