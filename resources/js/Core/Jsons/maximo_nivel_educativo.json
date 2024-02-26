@@ -1,0 +1,12 @@
+[
+    { "value":"nunca_asistio", "label": "Nunca asistió" },
+    { "value":"primaria_incompleta", "label": "Primaria incompleta" },
+    { "value":"primaria_completa", "label": "Primaria completa" },
+    { "value":"secundaria_incompleta", "label": "Secundaria incompleta" },
+    { "value":"secundaria_completa", "label": "Secundaria completa" },
+    { "value":"terciario_incompleto", "label": "Terciario incompleto" },
+    { "value":"terciario_completo", "label": "Terciario completo" },
+    { "value":"universitario_incompleto", "label": "Universitario incompleto" },
+    { "value":"universitario_completo", "label": "Universitario completo" },
+    { "value":"no_sabe_no_contesta", "label": "No Sabe/No Contesta" }
+]

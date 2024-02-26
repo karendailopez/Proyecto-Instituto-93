@@ -13,5 +13,6 @@ class AlumnoDatoExtra extends Model
         'alumno_id',
         'campo',
         'valor',
+        'orden'
     ];
 }

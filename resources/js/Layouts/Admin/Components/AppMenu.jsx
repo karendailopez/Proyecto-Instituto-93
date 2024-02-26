@@ -1,6 +1,14 @@
 import ApplicationLogo from "@/Components/ApplicationLogo.jsx";
 import AppMenuItem from "./AppMenuItem.jsx";
 
+function checkCurrent(routes = []) {
+    const currentRoute = route().current();
+
+    const find = routes.find( value => currentRoute.includes(value) );
+
+    return !!find;
+}
+
 export default function AppMenu() {
     return <nav className="side-nav">
         <a href="" className="intro-x flex items-center pl-5 pt-4">
@@ -11,8 +19,12 @@ export default function AppMenu() {
         <ul>
             <AppMenuItem title="Dashboard" icon="home" url="admin.dashboard.index"/>
             <li className="side-nav__devider my-6"></li>
-            <AppMenuItem title="Usuarios" icon="users" url="admin.users.index"/>
-            <AppMenuItem title="Alumnos" icon="fa-graduation-cap" iconType="fa-solid" url="admin.alumnos.index"/>
+            <AppMenuItem title="Alumnos" icon="fa-graduation-cap" iconType="fa-solid" url="admin.alumnos.index" active={ checkCurrent(['admin.alumnos']) }/>
+
+            <AppMenuItem title="Administración" icon="box" active={ checkCurrent(['admin.carreras', 'admin.users']) }>
+                <AppMenuItem title="Carreras" icon="fa-graduation-cap" iconType="fa-solid" url="admin.carreras.index" active={ checkCurrent(['admin.carreras']) }/>
+                <AppMenuItem title="Usuarios" icon="users" url="admin.users.index" active={ checkCurrent(['admin.users']) } />
+            </AppMenuItem>
         </ul>
     </nav>;
 }

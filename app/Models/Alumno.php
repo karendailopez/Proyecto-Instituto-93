@@ -70,13 +70,23 @@ class Alumno extends Model
         return $this->hasMany( AlumnoCarrera::class, 'alumno_id' );
     }
 
+    public function alumno_dato_extras() : HasMany
+    {
+        return $this->hasMany( AlumnoDatoExtra::class, 'alumno_id' );
+    }
+
     // QUERIES
     public static function getAlumnoPorEmail(string $email) {
         return self::query()
             ->where(['email_encriptado' => $email])
             ->first();
     }
-
+    public static function getAlumno($id) {
+        return self::query()
+            ->with('alumno_dato_extras')
+            ->where(['id' => $id])
+            ->firstOrFail();
+    }
     public static function getAlumnos($options)
     {
         $query = self::query()

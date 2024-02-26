@@ -1,0 +1,8 @@
+export default {
+    NIVELEDUCATIVOPADRES: 0,
+    TRABAJO: 1,
+    FAMILIA: 2,
+    BECAS: 3,
+    PRACTICASCULTURALES: 4,
+    FICHASALUD: 5
+};

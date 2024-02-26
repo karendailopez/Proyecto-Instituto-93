@@ -4,7 +4,7 @@ import AppMobileMenu from "./Components/AppMobileMenu.jsx";
 import AppMenu from "./Components/AppMenu.jsx";
 import TopBar from "./Components/TopBar.jsx";
 
-export default function Admin({ children }) {
+export default function Admin({ children, breadcrumb }) {
     useEffect(() => {
         document.body.classList.add('main');
 
@@ -18,7 +18,7 @@ export default function Admin({ children }) {
         <div className="flex">
             <AppMenu></AppMenu>
             <div className="content">
-                <TopBar></TopBar>
+                <TopBar breadcrumb={ breadcrumb }></TopBar>
 
                 {children}
             </div>

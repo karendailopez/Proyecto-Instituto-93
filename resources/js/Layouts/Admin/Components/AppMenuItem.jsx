@@ -8,27 +8,37 @@ export default function AppMenuItem({title, url, icon, iconType, active, childre
     const onClick = function (event) {
         if(children) {
             event.preventDefault();
-            console.log(open);
             setOpen(!open);
         }
     }
 
+    const content = <>
+        <div className="side-menu__icon"><AppIcon name={icon} type={iconType}></AppIcon></div>
+        <div className="side-menu__title">
+            {title}
+            {children && (
+                <div className={`side-menu__sub-icon ${open ? 'transform rotate-180' : ''}`}>
+                    <AppIcon name="chevron-down"></AppIcon>
+                </div>
+            )}
+        </div>
+    </>;
+
     return <li>
-        <Link href={route(url)} className={`side-menu ${ route().current(url) ? 'side-menu--active' : '' }`} onClick={onClick}>
-            <div className="side-menu__icon"><AppIcon name={icon} type={iconType}></AppIcon></div>
-            <div className="side-menu__title">
-                {title}
-                {children && (
-                    <div className={`side-menu__sub-icon ${open ? 'transform rotate-180' : ''}`}>
-                        <AppIcon name="chevron-down"></AppIcon>
-                    </div>
-                )}
-            </div>
-        </Link>
-        {children && (
+        {!children && (
+            <Link href={route(url)} className={`side-menu ${(route().current(url) || active) ? 'side-menu--active' : ''}`}
+                  onClick={onClick}>
+                { content }
+            </Link>
+        )}
+
+        {children && (<>
+            <a href="#" className={`side-menu ${open ? 'side-menu--active' : ''}`} onClick={onClick}>
+                { content }
+            </a>
             <ul className={open ? 'side-menu__sub-open' : ''}>
                 {children}
             </ul>
-        )}
+        </>)}
     </li>;
 }

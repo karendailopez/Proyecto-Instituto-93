@@ -2,7 +2,7 @@ import {Link, usePage} from "@inertiajs/react";
 import {getUrlPaginate} from "@/Core/functions.js";
 import AppIcon from "@/Components/Icons/AppIcon.jsx";
 
-export default function TableHead({ head, options }) {
+export default function TableHead({ head, options, hasAction }) {
     const { props } = usePage();
     const { path, per_page } = options;
 
@@ -21,7 +21,7 @@ export default function TableHead({ head, options }) {
     return <thead>
         <tr>
             {headHtml}
-            <th className={`whitespace-nowrap`}>Acción</th>
+            {hasAction && <th className={`whitespace-nowrap`}>Acción</th>}
         </tr>
     </thead>;
 }

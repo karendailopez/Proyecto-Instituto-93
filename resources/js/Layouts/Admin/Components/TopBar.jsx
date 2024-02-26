@@ -1,11 +1,10 @@
 import AppIcon from "@/Components/Icons/AppIcon.jsx";
+import Breadcrumb from "./Breadcrumb.jsx";
 
-export default function () {
+export default function ({ breadcrumb }) {
     return <div className="top-bar">
-        <div className="-intro-x breadcrumb mr-auto hidden sm:flex">
-            <a href="">Application</a> <AppIcon name="chevron-right" className="breadcrumb__icon"></AppIcon>
-            <a href="" className="breadcrumb--active">Dashboard</a>
-        </div>
+        <Breadcrumb breadcrumb={ breadcrumb }></Breadcrumb>
+
         <div className="intro-x relative mr-3 sm:mr-6">
             <div className="search hidden sm:block">
                 <input type="text" className="search__input form-control border-transparent placeholder-theme-13"

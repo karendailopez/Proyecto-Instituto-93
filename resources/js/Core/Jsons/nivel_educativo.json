@@ -1,0 +1,5 @@
+[
+    { "value": "terciario", "label": "Terciario" },
+    { "value": "universitario", "label": "Universitario" },
+    { "value": "Posgrado", "label": "posgrado" }
+]

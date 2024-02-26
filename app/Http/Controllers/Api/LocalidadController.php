@@ -8,7 +8,7 @@ use App\Models\Localidad;
 class LocalidadController extends Controller
 {
     public function get($id) {
-        $localidades = Localidad::getLocalidades($id);
+        $localidades = Localidad::getDropdown($id);
 
         return $localidades;
     }

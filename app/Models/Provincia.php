@@ -17,4 +17,10 @@ class Provincia extends Model
         return self::query()
             ->get();
     }
+
+    public static function getDropdown() {
+        return self::query()
+            ->select(['id as value', 'descripcion as label'])
+            ->get();
+    }
 }

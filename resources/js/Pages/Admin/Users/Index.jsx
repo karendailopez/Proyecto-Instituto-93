@@ -1,11 +1,15 @@
 import AdminLayout from '@/Layouts/Admin/AdminLayout.jsx';
-import AppIcon from "@/Components/Icons/AppIcon.jsx";
 import Table from "@/Components/Table/Table.jsx";
-import {Head} from "@inertiajs/react";
+import {Head, router} from "@inertiajs/react";
 import DropdownButton from "@/Layouts/Admin/Components/DropdownButton.jsx";
 import DropdownButtonItem from "@/Layouts/Admin/Components/DropdownButtonItem.jsx";
+import AdminTitle from "@/Layouts/Admin/Components/AdminTitle.jsx";
 
 export default function Index({ users }) {
+    const breadcrumb = [
+        { href: route('admin.users.index'), label: 'Usuarios' }
+    ];
+
     const table = [
         { value: 'id',  label: 'X' },
         { value: 'name',  label: 'Nombre' },
@@ -13,14 +17,21 @@ export default function Index({ users }) {
         { value: 'rol.descripcion',  label: 'Rol' }
     ]
 
-    return <AdminLayout>
+    const actions = [
+        {
+            label: 'Editar',
+            icon: 'check-square',
+            iconClass: 'w-4 h-4 mr-1',
+            action: (value) => { router.visit(route('admin.users.edit', value.id)) }
+        }
+    ];
+
+    return <AdminLayout breadcrumb={ breadcrumb }>
         <Head title="Usuarios"/>
 
-        <h2 className="intro-y text-lg font-medium mt-10">
-            Lista de Usuarios Administradores
-        </h2>
+        <AdminTitle title="Lista de Usuarios Administradores" />
 
-        <Table head={table} rows={users} paginate={true}>
+        <Table head={table} rows={users} actions={actions} paginate={true}>
             <a href={route('admin.users.create')} className="btn btn-primary shadow-md mr-2">Agregar nuevo</a>
 
             <DropdownButton>

@@ -17,4 +17,13 @@ class Functions
         }
         return substr(bin2hex($bytes), 0, $lenght);
     }
+
+    public  static function hasValue($value): bool
+    {
+        if(isset($value) && $value !== '') {
+            return true;
+        }
+
+        return false;
+    }
 }

@@ -39,7 +39,6 @@ export function getUrlPaginate(url, props, limit, columnOrder = null) {
 
         result += `order=${columnOrder}`;
 
-            console.log(columnOrder, props.order);
         if(props.order === columnOrder) {
             result += `&direction=${ props.direction === 'desc' ? 'asc' : 'desc' }`;
         } else {

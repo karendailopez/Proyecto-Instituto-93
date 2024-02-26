@@ -1,0 +1,6 @@
+[
+    { "value": "DNI", "label": "DNI (Documento Nacional de Identidad)" },
+    { "value": "LC", "label": "LC (Libreta Cívica)" },
+    { "value": "LE", "label": "LE (Libreta de Enrolamiento)" },
+    { "value": "CI", "label": "CI (Cédula de Identidad)" }
+]

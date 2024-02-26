@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Core\Constants\TipoUsuario;
+use App\Core\Functions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserRequest;
 use App\Models\Rol;
@@ -38,6 +39,34 @@ class UsersController extends Controller
             'rol_id' => $request->rol_id,
             'email_verified_at' => Carbon::now()
         ]);
+
+        return Redirect::route('admin.users.index');
+    }
+
+    public function edit($id)
+    {
+        $user = User::find($id);
+
+        $roles = Rol::getDropdown(TipoUsuario::Administrador);
+
+        return Inertia::render('Admin/Users/Edit', compact('user', 'roles'));
+    }
+
+    public function update(UserRequest $request) : RedirectResponse
+    {
+        $user = User::find($request->id);
+
+        $password = $user->password;
+
+        $user->fill( $request->validated() );
+
+        if (Functions::hasValue($user->password) && $user->isDirty('password')) {
+            $user->password = Hash::make($request->password);
+        } else {
+            $user->password = $password;
+        }
+
+        $user->save();
 
         return Redirect::route('admin.users.index');
     }

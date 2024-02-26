@@ -16,6 +16,8 @@ export default function AppMobileMenu() {
             <AppMobileMenuItem icon="home" title="Dashboard" url="admin.dashboard.index" />
             <li className="menu__devider my-6"></li>
             <AppMobileMenuItem title="Usuarios" icon="users" url="admin.users.index"/>
+            <AppMobileMenuItem title="Alumnos" icon="users" url="admin.alumnos.index"/>
+            <AppMobileMenuItem title="Carerras" icon="users" url="admin.carreras.index"/>
         </ul>
     </div>;
 }

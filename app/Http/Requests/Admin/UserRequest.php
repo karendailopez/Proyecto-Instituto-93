@@ -17,10 +17,18 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
+        $emailRule = 'required|string|email|max:255|unique:'.User::class;
+        $passwordRule = ['required', 'confirmed', Rules\Password::defaults()];
+
+        if ($this->route('user')) {
+            $emailRule = ['required', 'string', 'email', 'max:255', Rule::unique(User::class)->ignore( $this->route('user') )];
+            $passwordRule = ['confirmed', Rules\Password::defaults()];
+        }
+
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:'.User::class,
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email' => $emailRule,
+            'password' => $passwordRule,
             'rol_id' => ['required', Rule::exists(Rol::class, 'id')],
         ];
     }

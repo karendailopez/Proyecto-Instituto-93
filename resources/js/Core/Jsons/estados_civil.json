@@ -1,0 +1,7 @@
+[
+    { "value": "soltero", "label": "Soltero" },
+    { "value": "casado", "label": "Casado" },
+    { "value": "divorciado", "label": "Divorciado" },
+    { "value": "viudo", "label": "Viudo" },
+    { "value": "conviviente", "label": "Conviviente" }
+]
