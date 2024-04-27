@@ -6,7 +6,7 @@
   - [2 - Crear Proyecto React](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-3-(2---Crear-Proyecto-React))
   - [3 - Estructura de proyecto](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-3-(3---Estructura-de-proyecto))
   - [4 - Introducción a React](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-3-(4---Introducci%C3%B3n-a-React))
-  - [5 - Calculadora](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-3-(5---Calculadora))
+  - [5 - Calculadora](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-3-(5-Calculadora))
 - Archivos
   - [modulos.zip](uploads/7c563fe426a0d6659b176996e796da05/modulos.zip)
   - [calculadora.zip](https://gitlab.com/mauricio3389/instituto-web/-/wikis/uploads/6bca2eb3256fcbe809dc1599fd1e76af/calculadora.zip)
