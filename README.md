@@ -1,5 +1,16 @@
 #Listado de Clases
 
+## Clase 4
+- Links
+  - [1 - Atomización de Componentes](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-4-(1-Atomizaci%C3%B3n-de-Componentes))
+  - [2 - Componente Table](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-4-(2-Componente-Table))
+  - [3 - Componente TableHead](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-4-(3-Componente-TableHead))
+  - [4 - Componente TableBody](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-4-(4-Componente-TableBody))
+  - [5 - Mejoras TableBody](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-4-(5-Mejoras-TableBody))
+  - [6 - Atomizando las vistas](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-4-(6-Atomizando-las-vistas))
+- Archivos
+  - [datos.zip](https://gitlab.com/mauricio3389/instituto-web/-/wikis/uploads/40e5264abf451a8640d676b5dfc1a5fa/datos.zip)
+
 ## Clase 3
 - Links
   - [1 - Modulos Javascript](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-3-(1-Modulos-Javascript))
