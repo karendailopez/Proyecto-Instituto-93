@@ -10,6 +10,9 @@
 - Archivos
   - [form.zip](uploads/c46813b5b6cb40724fc6af26e4e9883a/form.zip)
   - [php.zip](uploads/2068ebabda99dad1678e00790fe9b243/php.zip)
+- Links externos
+  - [PHP - Arrays](https://www.php.net/manual/es/language.types.array.php)
+  - [PHP - Objetos](https://www.php.net/manual/es/language.types.object.php)
 
 ## Clase 4
 - Links
