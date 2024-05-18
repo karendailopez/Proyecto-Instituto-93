@@ -1,4 +1,20 @@
-#Listado de Clases
+# Listado de Clases
+
+## Clase 6
+
+- Links
+  - [1 - Página Web](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-6-(1---P%C3%A1gina-Web))
+  - [2 - PhpMyAdmin](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-6-(2---PhpMyAdmin))
+  - [3 - Dominio Virtual](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-6-(3---Dominio-Virtual))
+  - [4 - Acceso a Base de Datos](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-6-(4---Acceso-a-Base-de-Datos))
+  - [5 - Laravel](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-6-(5-Laravel))
+- Archivos
+  - [mipagina.zip](uploads/461d52d5f9b14d92d77db9b9deb48f6e/mipagina.zip)
+  - [instituto.zip](uploads/bd33e8df516518be0e53bea221a59207/instituto.zip)
+  Links externos
+  - [Composer](https://getcomposer.org/download/)
+  - [Laravel](https://laravel.com/)
+  - [Laravel Starter kits](https://laravel.com/docs/11.x/starter-kits)
 
 ## Clase 5
 - Links
