@@ -11,7 +11,7 @@
 - Archivos
   - [mipagina.zip](uploads/461d52d5f9b14d92d77db9b9deb48f6e/mipagina.zip)
   - [instituto.zip](uploads/bd33e8df516518be0e53bea221a59207/instituto.zip)
-  Links externos
+- Links externos
   - [Composer](https://getcomposer.org/download/)
   - [Laravel](https://laravel.com/)
   - [Laravel Starter kits](https://laravel.com/docs/11.x/starter-kits)
