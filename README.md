@@ -1,5 +1,17 @@
 # Listado de Clases
 
+## Clase 8
+- Links
+  - [1 Proyecto Instituto](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Proyecto-Instituto)
+- Archivos
+  - [instituto_db.sql](uploads/e9d750d69f27edfb76fe1ba0d74c7282/instituto_db.sql)
+  - [diseño.zip](uploads/2bebbd28ae898ae7887885b69d6b8205/diseño.zip)
+  - [public.zip](uploads/e8ae064b8050cde235fe5ba8d9449c22/public.zip)
+
+## Clase 7
+
+- Archivos
+
 ## Clase 6
 
 - Links
