@@ -9,7 +9,8 @@
   - [public.zip](uploads/e8ae064b8050cde235fe5ba8d9449c22/public.zip)
 
 ## Clase 7
-
+- Links
+  - [Clase-7](https://gitlab.com/mauricio3389/instituto-web/-/wikis/Clase-7)
 - Archivos
 
 ## Clase 6
