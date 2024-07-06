@@ -3,7 +3,7 @@ import AdminTitle from "@/Layouts/Admin/Components/AdminTitle.jsx";
 import Form from '@/Layouts/Admin/Components/Form/Form.jsx';
 import {Head, useForm} from "@inertiajs/react";
 import FormInput from "@/Layouts/Admin/Components/Form/FormInput.jsx";
-import FormSelect from "@/Layouts/Admin/Components/Form/FormSelect.jsx";
+import FormSelect from "@/Layouts/Admin/Components/Form/FormSelect/FormSelect.jsx";
 
 export default function Create({roles}) {
     const breadcrumb = [
@@ -11,7 +11,7 @@ export default function Create({roles}) {
         { href: route('admin.users.create'),  label: 'Agregar Usuario' }
     ];
 
-    const {setData, post, processing, errors, reset } = useForm({
+    const {data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
         rol_id: '',
@@ -44,21 +44,21 @@ export default function Create({roles}) {
                 <Form onSubmit={onSubmit} onReset={onReset} procesing={processing} backHref={ route('admin.users.index') }>
                     <div className="sm:grid grid-cols-2 gap-2">
                         <FormInput name="name" placeholder="Nombre" type="text"
-                                   onChange={onChangeData} errors={errors}></FormInput>
+                                   onChange={onChangeData} value={data.name} errors={errors}></FormInput>
 
                         <FormInput name="email" placeholder="Email" type="email"
-                                   onChange={onChangeData} errors={errors}></FormInput>
+                                   onChange={onChangeData} value={data.email} errors={errors}></FormInput>
                     </div>
                     <div className="sm:grid grid-cols-2 gap-2 mt-3">
                         <FormSelect name="rol_id" items={roles} label="Rol"
-                                    onChange={onChangeData} errors={errors}></FormSelect>
+                                    onChange={onChangeData} value={data.rol_id} errors={errors}></FormSelect>
                     </div>
                     <div className="sm:grid grid-cols-2 gap-2 mt-3">
                         <FormInput name="password" placeholder="Contraseña" type="password"
-                                   onChange={onChangeData} errors={errors}></FormInput>
+                                   onChange={onChangeData} value={data.password} errors={errors}></FormInput>
 
                         <FormInput name="password_confirmation" placeholder="Repita Contraseña" type="password"
-                                   onChange={onChangeData} errors={errors}></FormInput>
+                                   onChange={onChangeData} value={data.password_confirmation} errors={errors}></FormInput>
                     </div>
                 </Form>
             </div>

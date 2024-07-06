@@ -22,7 +22,7 @@ export default function Index({ carreras }) {
     const table = [
         { value: 'id',  label: 'X' },
         { value: 'nombre',  label: 'Carrera' },
-        { value: 'numero_institucion',  label: 'Intituto' },
+        { value: 'numero_institucion',  label: 'Instituto' },
         { value: 'jefe_catedra',  label: 'Jefe de Cátedra' },
         {
             value: 'estado',

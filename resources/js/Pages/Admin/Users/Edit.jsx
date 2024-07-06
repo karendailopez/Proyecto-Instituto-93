@@ -3,7 +3,7 @@ import AdminTitle from "@/Layouts/Admin/Components/AdminTitle.jsx";
 import Form from '@/Layouts/Admin/Components/Form/Form.jsx';
 import {Head, useForm} from "@inertiajs/react";
 import FormInput from "@/Layouts/Admin/Components/Form/FormInput.jsx";
-import FormSelect from "@/Layouts/Admin/Components/Form/FormSelect.jsx";
+import FormSelect from "@/Layouts/Admin/Components/Form/FormSelect/FormSelect.jsx";
 
 export default function Create({user, roles}) {
     const breadcrumb = [

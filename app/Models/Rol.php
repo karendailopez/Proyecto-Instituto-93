@@ -34,4 +34,8 @@ class Rol extends Model
                 ->select(['id as value', 'descripcion as label'])
                 ->get();
     }
+
+    public static function getRol($rol_id) {
+        return self::find($rol_id);
+    }
 }
