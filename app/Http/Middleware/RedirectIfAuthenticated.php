@@ -7,6 +7,8 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
+use App\Models\Rol;
+use App\Core\Constants\TipoUsuario;
 
 class RedirectIfAuthenticated
 {
@@ -21,7 +23,19 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                $rol = Rol::getRol( $request->user()->rol_id);
+
+                switch($rol->tipo_usuario_id) {
+                    case TipoUsuario::Administrador:
+                        return redirect()->intended(RouteServiceProvider::HOMEADMIN);
+                        break;
+                    case TipoUsuario::Profesor:
+                        return redirect()->intended(RouteServiceProvider::HOMEPROFESOR);
+                        break;
+                    case TipoUsuario::Alumno:
+                        return redirect()->intended(RouteServiceProvider::HOMEALUMNO);
+                        break;
+                }
             }
         }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Core\Constants\TipoUsuario;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Models\Rol;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -34,7 +36,19 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $rol = Rol::getRol( $request->user()->rol_id);
+
+        switch($rol->tipo_usuario_id) {
+            case TipoUsuario::Administrador:
+                return redirect()->intended(RouteServiceProvider::HOMEADMIN);
+                break;
+            case TipoUsuario::Profesor:
+                return redirect()->intended(RouteServiceProvider::HOMEPROFESOR);
+                break;
+            case TipoUsuario::Alumno:
+                return redirect()->intended(RouteServiceProvider::HOMEALUMNO);
+                break;
+        }
     }
 
     /**
