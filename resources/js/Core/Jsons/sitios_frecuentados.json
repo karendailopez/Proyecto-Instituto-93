@@ -1,0 +1,8 @@
+[
+    { "value": "correo_electronico", "label": "Correo electrónico" },
+    { "value": "buscadores", "label": "Buscadores" },
+    { "value": "reservorios_informacion", "label": "Reservorios de información" },
+    { "value": "diarios_revistas", "label": "Diarios y revistas" },
+    { "value": "portal_abc", "label": "Portal ABC" },
+    { "value": "otros_sitios", "label": "Otros", "unique": true }
+]

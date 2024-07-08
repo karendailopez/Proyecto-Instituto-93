@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import {Head, useForm} from "@inertiajs/react";
 import AdminLayout from "@/Layouts/Admin/AdminLayout.jsx";
 import AdminTitle from "@/Layouts/Admin/Components/AdminTitle.jsx";
@@ -6,12 +5,17 @@ import Wizard from "@/Components/Wizard/Wizard.jsx";
 import WizardContent from "@/Components/Wizard/WizardContent.jsx";
 import DatosPersonales from "./Partials/DatosPersonales.jsx";
 import Formacion from "./Partials/Formacion.jsx";
-import FormInput from "@/Layouts/Admin/Components/Form/FormInput.jsx";
-import FormRadio from "@/Layouts/Admin/Components/Form/FormRadio.jsx";
-import FormSelect from "@/Layouts/Admin/Components/Form/FormSelect/FormSelect.jsx";
 import { useFormEvent } from "@/Core/Hooks/useFormEvent.js";
-import { niveles_educativos, maximo_nivel_educativo, alumno_dato_extras } from '@/Core/Jsons';
-import datoExtra from '@/Core/Constants/datoExtra.js';
+import {alumno_dato_extras, familiares, horas_trabajo, sector_trabajo} from '@/Core/Jsons';
+import Trabajo from "@/Pages/Admin/Alumnos/Partials/Trabajo.jsx";
+import Cultura from "@/Pages/Admin/Alumnos/Partials/Cultura.jsx";
+import Salud from "@/Pages/Admin/Alumnos/Partials/Salud.jsx";
+import Instituto from "@/Pages/Admin/Alumnos/Partials/Instituto.jsx";
+import FormRadio from "@/Layouts/Admin/Components/Form/FormRadio.jsx";
+import datoExtra from "@/Core/Constants/datoExtra.js";
+import FormSelect from "@/Layouts/Admin/Components/Form/FormSelect/FormSelect.jsx";
+import FormInput from "@/Layouts/Admin/Components/Form/FormInput.jsx";
+import FamiliaBeca from "@/Pages/Admin/Alumnos/Partials/FamiliaBeca.jsx";
 
 export default function Edit({ alumno, provincias }) {
     const breadcrumb = [
@@ -54,6 +58,18 @@ export default function Edit({ alumno, provincias }) {
         mayor_titulo_descripcion: alumno.mayor_titulo_descripcion,
         mayor_titulo_institucion: alumno.mayor_titulo_institucion,
         mayor_titulo_promedio: alumno.mayor_titulo_promedio,
+        fotocopia_titulo: alumno.fotocopia_titulo,
+        constancia_titulo_tramite: alumno.constancia_titulo_tramite,
+        constancia_adeuda_materias: alumno.constancia_adeuda_materias,
+        cantidad_adeuda_materias: alumno.cantidad_adeuda_materias,
+        certificado_aptitud: alumno.certificado_aptitud,
+        fotocopia_documento: alumno.fotocopia_documento,
+        foto_carnet: alumno.foto_carnet,
+        fotocopia_partida_nacimiento: alumno.fotocopia_partida_nacimiento,
+        vacuna_antihepatitis: alumno.vacuna_antihepatitis,
+        vacuna_antitetanica: alumno.vacuna_antitetanica,
+        recibo: alumno.recibo,
+        monto: alumno.monto,
         alumno_dato_extras: getAlumnoDatoExtras(alumno.alumno_dato_extras)
     });
 
@@ -95,11 +111,27 @@ export default function Edit({ alumno, provincias }) {
             </WizardContent>
 
             <WizardContent title="Trabajo">
-                <FormRadio name="alumno_dato_extras" label="¿Vive solo?"
-                           checked={data.alumno_dato_extras[ datoExtra.TRABAJO ].valor.vive_solo}
-                           onChange={() => onChangeDataExtra(event, datoExtra.TRABAJO, 'vive_solo' )}></FormRadio>
+                <Trabajo data={ data } setData={ setData } errors={ errors }></Trabajo>
+            </WizardContent>
 
+            <WizardContent title="Familia y Becas">
+                <FamiliaBeca data={ data } setData={ setData } errors={ errors }></FamiliaBeca>
+            </WizardContent>
 
+            <WizardContent title="Cooperadora">
+                <Trabajo data={data} setData={setData} errors={errors}></Trabajo>
+            </WizardContent>
+
+            <WizardContent title="Cultura">
+                <Cultura data={data} setData={setData} errors={errors}></Cultura>
+            </WizardContent>
+
+            <WizardContent title="Salud">
+                <Salud data={data} setData={setData} errors={errors}></Salud>
+            </WizardContent>
+
+            <WizardContent title="Instituto">
+                <Instituto data={data} setData={setData} errors={errors}></Instituto>
             </WizardContent>
         </Wizard>
     </AdminLayout>;

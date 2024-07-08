@@ -1,0 +1,12 @@
+[
+    { "value": "ninguno", "label": "Ninguno", "unique": true },
+    { "value": "estímulos_económicos_infd", "label": "Estímulos económicos (INFD)" },
+    { "value": "becas_bicentenario", "label": "Becas Bicentenario" },
+    { "value": "pueblos_originarios", "label": "Pueblos originarios" },
+    { "value": "progresar", "label": "Progresar" },
+    { "value": "auh", "label": "AUH" },
+    { "value": "compromiso_docente", "label": "Compromiso docente" },
+    { "value": "programa_envion", "label": "Programa Envión" },
+    { "value": "argentina_trabaja", "label": "Argentina trabaja" },
+    { "value": "ellas_hacen", "label": "Ellas hacen" }
+]

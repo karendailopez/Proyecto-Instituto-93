@@ -1,0 +1,8 @@
+[
+    { "value": "facebook", "label": "Facebook" },
+    { "value": "twitter", "label": "Twitter" },
+    { "value": "linkedin", "label": "Linkedin" },
+    { "value": "instagram", "label": "Instagram" },
+    { "value": "snapchat", "label": "Snapchat" },
+    { "value": "otra_red_social", "label": "Otra", "unique": true }
+]

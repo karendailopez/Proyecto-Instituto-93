@@ -17,7 +17,7 @@ use Inertia\Inertia;
 class InscripcionController
 {
     public function carrera() {
-        $carreras = Carrera::getCarreras();
+        $carreras = Carrera::getDropdown();
         $provincias = Provincia::getProvincias();
 
         return view('InscripcionCarrera', compact('carreras', 'provincias'));

@@ -1,0 +1,17 @@
+[
+    { "value": "educación", "label": "Educación" },
+    { "value": "gobierno", "label": "Gobierno Sector Público" },
+    { "value": "servicio_financiero", "label": "Servicio Financiero" },
+    { "value": "turismo", "label": "Turismo" },
+    { "value": "sector_agropecuario", "label": "Sector Agropecuario" },
+    { "value": "comercio", "label": "Comercio" },
+    { "value": "empresa", "label": "Empresa" },
+    { "value": "servicios", "label": "Servicios" },
+    { "value": "transporte", "label": "Transporte" },
+    { "value": "profesional_independiente", "label": "Profesional Independiente" },
+    { "value": "industria_manufacturera", "label": "Industria Manufacturera" },
+    { "value": "energía", "label": "Energía" },
+    { "value": "salud", "label": "Salud" },
+    { "value": "fuerzas_armadas_seguridad", "label": "Fuerzas Armadas / Seguridad" },
+    { "value": "otro", "label": "Otro", "unique": true }
+]
