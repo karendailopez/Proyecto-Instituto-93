@@ -18,6 +18,7 @@ export default function AppMenu() {
         <div className="side-nav__devider my-6"></div>
         <ul>
             <AppMenuItem title="Dashboard" icon="home" url="alumnos.dashboard.index"/>
+            <AppMenuItem title="Mesas" icon="fa-school" iconType="fa-solid" url="alumnos.mesas.index" active={checkCurrent(['alumno.mesas'])}/>
         </ul>
     </nav>;
 }
