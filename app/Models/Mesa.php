@@ -25,4 +25,8 @@ class Mesa extends Model
         'total_aplazados'
         
     ];
+    public function cusoMateria()
+    {
+        return $this->belongsTo(cursoMateria::class);
+    }
 }

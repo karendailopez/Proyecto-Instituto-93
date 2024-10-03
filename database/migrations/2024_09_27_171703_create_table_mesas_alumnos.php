@@ -11,9 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_mesas_alumnos', function (Blueprint $table) {
+        Schema::create('mesa_alumnos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('mesa_id'); 
+            $table->unsignedBigInteger('alumno_carrera_id')->nullable(); 
+            $table->unsignedBigInteger('cursada_alumno_id')->nullable(); 
+            $table->unsignedBigInteger('mesa_alumno_estado_id');
+            $table->integer('nota_numerica')->nullable(); 
+            $table->string('nota_letras', 20)->nullable(); 
+            $table->timestamps(); 
+
+            
+            $table->foreign('mesa_id')->references('id')->on('mesas');
+            $table->foreign('alumno_carrera_id')->references('id')->on('alumno_carreras');
+            $table->foreign('cursada_alumno_id')->references('id')->on('cursada_alumnos');
+            $table->foreign('mesa_alumno_estado_id')->references('id')->on('mesa_alumno_estados');
         });
     }
 
@@ -22,6 +34,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_mesas_alumnos');
+        Schema::dropIfExists('mesa_alumnos');
     }
 };
+

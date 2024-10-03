@@ -24,6 +24,7 @@ export default function AppMenu() {
             <AppMenuItem title="Administración" icon="box" active={ checkCurrent(['admin.carreras', 'admin.users']) }>
                 <AppMenuItem title="Carreras" icon="fa-graduation-cap" iconType="fa-solid" url="admin.carreras.index" active={ checkCurrent(['admin.carreras']) }/>
                 <AppMenuItem title="Usuarios" icon="users" url="admin.users.index" active={ checkCurrent(['admin.users']) } />
+                <AppMenuItem title="Personal" icon="users" url="admin.personal.index" active={ checkCurrent(['personal.users']) } />
             </AppMenuItem>
         </ul>
     </nav>;
