@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\SesionController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,8 @@ Route::get('/dashboard', function () { return Inertia::render('Dashboard');})
 
 Route::get('/inscripcion-carrera', [\App\Http\Controllers\InscripcionController::class, 'carrera'])->name('inscripcion-carrera');
 Route::get('/inscripcion-materia', [\App\Http\Controllers\InscripcionController::class, 'materia'])->name('inscripcion-materia');
+Route::get('/foro', [\App\Http\Controllers\ForoController::class, 'foroo'])->name('foro');
+Route::get('/iniciar-sesion', [SesionController::class, 'show'])->name('iniciar-sesion');
 Route::get('/verificar-alumno/{email}', [\App\Http\Controllers\InscripcionController::class, 'verificar'])->name('verificar-alumno');
 Route::post('/inscripcion', [\App\Http\Controllers\InscripcionController::class, 'store'])->name('inscripcion.store');
 

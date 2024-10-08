@@ -32,6 +32,16 @@ export default function PublicLayout({ children }) {
                                    Inscribirse a Materias
                                </Link>
                            </li>
+                           <li className="nav-item">
+                               <Link href={route('foro')} className="nav-link navbar-link text-dark">
+                                   Foro
+                               </Link>
+                           </li>
+                          <li className="nav-item">
+                               <Link href={route('iniciar-sesion')} className="nav-link navbar-link text-dark">
+                                   Iniciar Sesión
+                               </Link>
+                           </li>
                        </ul>
                    </div>
                </div>

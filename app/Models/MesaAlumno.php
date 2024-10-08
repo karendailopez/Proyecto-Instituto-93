@@ -31,6 +31,6 @@ class MesaAlumno extends Model
     }
     public function mesa_alumnos_estados() :BelongsTo
     {
-        return $this->belongsTo(MesaAlumnoEstado::class, 'mesa_alumno_estado_id');
+        return $this->belongsTo(MesaAlumnoEstado::class, 'id');
     }
 }

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import SesionLayout from '@/Layouts/SesionLayout';
+import SesionLayout from '@/Pages/SesionLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Login({ status, canResetPassword }) {

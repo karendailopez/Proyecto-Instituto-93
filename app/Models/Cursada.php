@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Cursada extends Model
 {
@@ -21,8 +22,12 @@ class Cursada extends Model
     ];
 
 
-    public function cursoMateria()
+    public function cursoMateria() : BelongsTo
     {
-        return $this->belongsTo(CursoMateria::class);
+        return $this->belongsTo(CursoMateria::class, 'id');
+    }
+    public function cursoLectivo() : BelongsTo
+    {
+        return $this->belongsTo(CicloLectivo::class, 'id');
     }
 }
