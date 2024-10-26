@@ -71,13 +71,13 @@ export default function Formacion({ data, setData, errors }) {
             <FormSelect name="alumno_dato_extras" items={maximo_nivel_educativo}
                         value={data.alumno_dato_extras[ datoExtra.NIVELEDUCATIVOPADRES ].valor.padre}
                         label="Máximo nivel educativo del padre" placeholder="Seleccione Nivel Educativo"
-                        onChange={() => onChangeDataExtra(event, datoExtra.NIVELEDUCATIVOPADRES, 'padre')}
+                        onChange={(event) => onChangeDataExtra(event, datoExtra.NIVELEDUCATIVOPADRES, 'padre')}
                         errors={errors}></FormSelect>
 
             <FormSelect name="alumno_dato_extras" items={maximo_nivel_educativo}
                         value={data.alumno_dato_extras[ datoExtra.NIVELEDUCATIVOPADRES ].valor.madre}
                         label="Máximo nivel educativo del madre" placeholder="Seleccione Nivel Educativo"
-                        onChange={() => onChangeDataExtra(event, datoExtra.NIVELEDUCATIVOPADRES, 'madre')}
+                        onChange={(event) => onChangeDataExtra(event, datoExtra.NIVELEDUCATIVOPADRES, 'madre')}
                         errors={errors}></FormSelect>
         </div>
     </>;

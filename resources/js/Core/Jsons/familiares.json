@@ -1,0 +1,6 @@
+[
+    { "value": "vive_con_padres", "label": "Con sus padres" },
+    { "value": "vive_con_conyuge", "label": "Con su cónyuge o conviviente" },
+    { "value": "vive_con_hijos", "label": "Con hijos" },
+    { "value": "vive_con_otros", "label": "Otros" }
+]

@@ -1,0 +1,8 @@
+[
+    { "value": "hogar", "label": "Hogar" },
+    { "value": "lugar_trabajo", "label": "Lugar de trabajo" },
+    { "value": "ambito_educativo", "label": "Ámbito educativo" },
+    { "value": "celular", "label": "Celular" },
+    { "value": "cyber", "label": "Cyber" },
+    { "value": "otro", "label": "Otro", "unique": true }
+]

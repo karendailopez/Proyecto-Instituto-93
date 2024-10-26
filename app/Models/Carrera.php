@@ -74,7 +74,7 @@ class Carrera extends Model
 
     public static function getDropdown() {
         return self::query()
-            ->where(['active' => true, 'mostrar_inscripcion' => true])
+            ->where(['mostrar_inscripcion' => true])
             ->get();
     }
 }

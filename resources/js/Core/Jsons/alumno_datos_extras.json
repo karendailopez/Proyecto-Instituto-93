@@ -2,7 +2,7 @@
     { "campo": "nivel_educativo_padres", "valor": "{ \"padre\": null, \"madre\": null }", "orden": "1" },
     { "campo": "trabajo", "valor": "{ \"trabaja\": null, \"sector\": [], \"otro_sector\": null, \"horas_trabajo\": null, \"pensionado_jubilado\": null }", "orden": "2" },
     { "campo": "familia", "valor": "{ \"vive_solo\": null, \"vive_con\": [], \"familiar_a_cargo\": null, \"a_cargo_de\": [] }", "orden": "3" },
-    { "campo": "becas", "valor": "{ \"beca_programa\": null }", "orden": "4" },
+    { "campo": "becas", "valor": "{ \"beca_programa\": [] }", "orden": "4" },
     { "campo": "practicas_culturales", "valor": "{ \"escucha_radio\": null, \"mira_television\": null, \"asiste_teatros\": null, \"asiste_museos\": null, \"asiste_conciertos\": null, \"lecturas_frecuentes\": null, \"tipo_lectura_frecuente\": [], \"lectura_especializada\": null, \"otras_practicas_culturales\": null, \"usa_internet\": null, \"donde_usa_internet\": [], \"usa_redes_sociales\": null, \"redes_sociales\": [], \"sitios_frecuentados\": [] }", "orden": "5" },
     { "campo": "ficha_salud", "valor": "{ \"obra_social_prepaga\": null, \"obra_social_descripcion\": null, \"tratamiento_medico\": null, \"tratamiento_medico_descripcion\": null, \"medicacion\": null, \"medicacion_descripcion\": null, \"discapacidad\": null, \"discapacidad_descripcion\": null, \"discapacidad_estado\": null, \"discapacidad_certificado\": null, \"contacto_emergencia\": null, \"telefono_contacto\": null }", "orden": "6" }
 ]

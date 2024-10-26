@@ -40,7 +40,7 @@ export default function Wizard ({ children, onGuardar, showGuardar }) {
                     onClick={ () => setActiveStep( step ) }>
                 </WizardStep>
             )}
-            <div className="wizard__line hidden lg:block w-2/3 bg-gray-200 dark:bg-dark-1 absolute mt-5"></div>
+            <div className="wizard__line hidden lg:block w-4/5 bg-gray-200 dark:bg-dark-1 absolute mt-5"></div>
         </div>
 
         <div className="px-5 sm:px-20 mt-10 pt-10 border-t border-gray-200 dark:border-dark-5">

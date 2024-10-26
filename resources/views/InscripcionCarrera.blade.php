@@ -474,7 +474,7 @@
                         <p class="desc">Completa los campos</p>
 
                         <div class="form-row">
-                            <label class="form-label">¿Realizaste el pago de la cooperador?</label>
+                            <label class="form-label">¿Realizaste el pago de la cooperadora?</label>
 
                             <div class="form-group">
                                 <input type="file" name="comprobante_cooperadora" id="comprobante_cooperadora" onchange="ocultarContenido('opcion_saltear')"/>

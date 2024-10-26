@@ -1,7 +1,7 @@
 import FormLabel from "@/Layouts/Admin/Components/Form/FormLabel.jsx";
 
 export default function FormRadio({label, name, multiple, value = null, checked, onChange}) {
-    return <>
+    return <div>
         <FormLabel name={name} label={label}></FormLabel>
         <div className="mt-2">
             <input
@@ -18,5 +18,5 @@ export default function FormRadio({label, name, multiple, value = null, checked,
                     }
                 }}/>
         </div>
-    </>
+    </div>
 }

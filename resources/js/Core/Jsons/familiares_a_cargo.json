@@ -1,0 +1,5 @@
+[
+    { "value": "a_cargo_de_padres", "label": "Padres" },
+    { "value": "a_cargo_de_hijos", "label": "Hijos" },
+    { "value": "a_cargo_de_otros", "label": "Otros" }
+]
