@@ -51,6 +51,7 @@ export default function Login({ status, canResetPassword }) {
                                value={data.password}
                                onChange={(e) => setData('password', e.target.value)}>
                         </input>
+                        { (errors && Object.hasOwn(errors, 'email')) && <div className="pristine-error text-primary-3 mt-2">{ errors['email'] }</div>}
                     </div>
                     <div className="intro-x flex text-gray-700 dark:text-gray-600 text-xs sm:text-sm mt-4">
                         <div className="flex items-center mr-auto">

@@ -65,3 +65,23 @@ export function getUrlPaginate(url, props, limit, columnOrder = null) {
 
     return result;
 }
+
+export function hasParentClass(classes, parent) {
+    if(typeof classes === 'string') {
+        if(parent.classList.contains( classes )) {
+            return true;
+        }
+    } else {
+        for( let i = 0; i < classes.length; i++ ) {
+            if(parent.classList.contains( classes[i] )) {
+                return true;
+            }
+        }
+    }
+
+    if(parent.parentElement) {
+        return hasParentClass( classes, parent.parentElement )
+    }
+
+    return false;
+}

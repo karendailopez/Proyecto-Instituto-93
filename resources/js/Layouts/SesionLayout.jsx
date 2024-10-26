@@ -4,6 +4,10 @@ import {useEffect} from "react";
 export default function SesionLayout({ user, children }) {
     useEffect(() => {
         document.body.classList.add('login');
+
+        return () => {
+            document.body.classList.remove('login');
+        }
     }, []);
 
     return (
