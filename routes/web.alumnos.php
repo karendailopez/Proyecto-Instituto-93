@@ -3,7 +3,7 @@
 use App\Http\Controllers\Alumnos\DashboardController;
 use App\Http\Controllers\Alumnos\MesaController;
 use Illuminate\Support\Facades\Route;
-Route::group(['prefix' => 'alumnos', 'as' => 'alumnos.', 'middleware' => [/*'auth', 'role:alumno'*/]], function () {
+Route::group(['prefix' => 'alumnos', 'as' => 'alumnos.', 'middleware' => ['auth']], function () {
     Route::resource('dashboard', DashboardController::class);
 
    

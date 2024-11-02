@@ -5,7 +5,7 @@ import '../../css/public.css';
 import { Link } from '@inertiajs/react';
 import {useEffect} from "react";
 
-export default function PublicLayout({ children }) {
+export default function PublicLayout({ children, carteles=false }) {
     useEffect(() => {
         document.body.classList.remove('main');
     }, []);
@@ -37,9 +37,9 @@ export default function PublicLayout({ children }) {
                                    Foro
                                </Link>
                            </li>
-                          <li className="nav-item">
-                               <Link href={route('iniciar-sesion')} className="nav-link navbar-link text-dark">
-                                   Iniciar Sesión
+                           <li className="nav-item">
+                               <Link href={route('login')} className="nav-link navbar-link text-dark">
+                                   Login
                                </Link>
                            </li>
                        </ul>
@@ -47,6 +47,9 @@ export default function PublicLayout({ children }) {
                </div>
            </nav>
 
+
+           {!carteles && (
+            <>
            <div>
                <div className="card mb-3" style={{width: '100%', minHeight: '40vh'}}>
                    <div className="row flex-row-reverse g-0">
@@ -65,6 +68,8 @@ export default function PublicLayout({ children }) {
                    </div>
                </div>
            </div>
+           </>
+        )}
 
            <main className="my-5">
                <div className="container">
@@ -72,6 +77,8 @@ export default function PublicLayout({ children }) {
                </div>
            </main>
 
+           {!carteles && (
+            <>
            <div className="container">
                <footer className="d-flex flex-wrap justify-content-between py-3 my-4 border-top gap-3">
                    <div className="col-md-4 d-flex flex-column align-items-center">
@@ -109,6 +116,8 @@ export default function PublicLayout({ children }) {
                    </div>
                </div>
            </div>
+           </>
+        )}
        </>
     );
 }

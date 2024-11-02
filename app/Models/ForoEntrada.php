@@ -23,4 +23,18 @@ class ForoEntrada extends Model
     {
         return $this->belongsTo(User::class, 'id');
     }
+    public function comentarios() 
+    {
+        return $this->hasMany(ForoComentario::class, 'foro_entrada_id');
+    }
+
+    public function votos() 
+    {
+        return $this->hasMany(ForoVoto::class, 'foro_entrada_id');
+    }
+
+    public function denuncias() 
+    {
+        return $this->hasMany(ForoDenuncia::class, 'foro_entrada_id');
+    }
 }
