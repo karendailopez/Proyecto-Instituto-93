@@ -1,10 +1,20 @@
 import AlumnosLayout from "@/Layouts/Alumnos/AlumnosLayout";
 import Disenio from "@/Layouts/Alumnos/Disenio/disenio.jsx";
+import { useEffect } from "react";
+import React, { useState } from 'react';
+import { useForm } from '@inertiajs/react';
+
+
+
+
+
+
+
 
 export default function Index({ mesas }) {
     // Declarar la variable antes del return
     console.log(mesas)
-    var mesasFiltradas = mesas.map(function(mesa) {
+    var mesasFiltradas = mesas.map(function(mesa, etiquetas, etiquetasMasUsadas, auth ) {
         return {
             id: mesa.id,
             materia: mesa.materia.descripcion,
@@ -16,7 +26,29 @@ export default function Index({ mesas }) {
            
         };
     });
-   
+    const formEstado = useForm({
+        selectedMesas: []
+    })
+    const [mesasSelected, setMesasSelected] = useState(
+        mesas_alumno.map(mesa_alumno => mesa_alumno.mesa_id)
+    )
+    useEffect(() => {
+        formEstado.setData({
+            selectedMesas: mesasSelected
+        });
+    }, [mesasSelected]);
+
+    const handleSave = () => {
+        if(mesasSelected.length === 0){
+            alert("No hay mesas seleccionadas para guardar.");
+            return; //no se guarda nada en este caso
+        }
+
+        //use setTimeout para garantizar que es estado este actualizado antes de la operacion de guardado
+        setTimeout(() => {
+            formEstado.post(route('alumnos.mesas.updateSelected'));
+        })
+    }
 
     return (
         <AlumnosLayout>
@@ -26,5 +58,6 @@ export default function Index({ mesas }) {
             <Disenio mesas={mesasFiltradas} />
         </AlumnosLayout>
     );
+    
 }
 
