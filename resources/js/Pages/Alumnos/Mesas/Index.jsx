@@ -14,7 +14,7 @@ import { useForm } from '@inertiajs/react';
 export default function Index({ mesas }) {
     // Declarar la variable antes del return
     console.log(mesas)
-    var mesasFiltradas = mesas.map(function(mesa, etiquetas, etiquetasMasUsadas, auth ) {
+    var mesasFiltradas = mesas.map(function(mesa) {
         return {
             id: mesa.id,
             materia: mesa.materia.descripcion,
@@ -55,7 +55,7 @@ export default function Index({ mesas }) {
             <p>Mesas: Tecnicatura Superior en Analisis, Desarrollo y Programacion de Aplicaciones</p>
             
         
-            <Disenio mesas={mesasFiltradas} />
+            <Disenio mesas={mesasFiltradas} handleSave={handleSave} />
         </AlumnosLayout>
     );
     
