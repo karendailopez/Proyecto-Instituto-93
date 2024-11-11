@@ -41,6 +41,8 @@ export default function Create({ }) {
     const onSubmit = (event) => {
         event.preventDefault();
         modalRef.current.show();
+        
+       
     }
 
     const onReset = () => {
@@ -53,6 +55,7 @@ export default function Create({ }) {
     }
 
     const onModalOk = () => {
+        console.log(data)
         post(route('admin.personal.store'));
     }
 
@@ -83,12 +86,13 @@ export default function Create({ }) {
                         <FormInput name="direccion" placeholder="Direccion" type="text"
                                    onChange={onChangeData} value={data.direccion} errors={errors}></FormInput>
                     </div>
+                     
                     <div className="sm:grid grid-cols-2 gap-2 mt-3">
                         <FormInput name="piso" placeholder="Piso" type="text"
                                    onChange={onChangeData} value={data.piso} errors={errors}></FormInput>
                         <FormInput name="departamento" placeholder="Departamento" type="text"
                                    onChange={onChangeData} value={data.departamento} errors={errors}></FormInput>
-                    </div>
+                    </div> 
                     <div className="sm:grid grid-cols-2 gap-2 mt-3">
                         <FormInput name="localidad" placeholder="Localidad" type="text"
                                    onChange={onChangeData} value={data.localidad} errors={errors}></FormInput>

@@ -52,6 +52,7 @@ export default function Index({ personal }) {
                     id: value.id,
                     personalEstado: value.personalEstado === EstadoPersonal.ACTIVA ? EstadoPersonal.INACTIVA : EstadoPersonal.ACTIVA
                 });
+                console.log(formEstado.data);
                 modalRef.current.show();
             }
         }

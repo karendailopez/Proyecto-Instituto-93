@@ -6,6 +6,7 @@ use App\Models\Mesa;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\AlumnoCarrera;
+use App\Models\Alumno;
 use App\Models\CursadaAlumno;
 use App\Models\MesaAlumno;
 use Carbon\Carbon;
@@ -16,53 +17,55 @@ class MesaController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {
-        $user = $request->user(); // Obtener el usuario autenticado
-        $alumno = $user->alumno;
+{
+    $user = $request->user();
+    $alumno = Alumno::where('user_id', $user->id)->firstOrFail();
+    $alumnoCarrera = AlumnoCarrera::where('alumno_id', $alumno->id)->firstOrFail();
 
-        if ($alumno) {
-            $alumnoCarrera = AlumnoCarrera::where('alumno_id', $alumno->id)->first();
-
-            if ($alumnoCarrera) {
-                $request->session()->put('alumno_carrera_id', $alumnoCarrera->carrera_id);
-            }
-        }
-
-        $cursadas_alumno = CursadaAlumno::where('alumno_carrera_id', $alumnoCarrera->id)
+    $cursadas_alumno = CursadaAlumno::where('alumno_carrera_id', $alumnoCarrera->id)
                                         ->with(['cursada'])
                                         ->get();
 
-        $curso_materia_ids = array();
+   $curso_materia_ids = array();
 
-        foreach ($cursadas_alumno as $cursada_alumno) {
-            array_push($curso_materia_ids, $cursada_alumno->cursada->cursoMateria->id);
-        }
+   foreach ($cursadas_alumno as $cursada_alumno) {
+      array_push($curso_materia_ids, $cursada_alumno->cursada->cursoMateria->id);
+   }
 
-        // Filtra mesas y actualiza su estado
-        $mesas = Mesa::with(['personalPresidente', 'personalAuxiliar', 'materia', 'curso'])
-                    ->whereIn('curso_materia_id', $curso_materia_ids)
-                    ->get()
-                    ->map(function ($mesa) {
-                        // Si han pasado más de dos semanas, desactivar la mesa
-                        if (Carbon::parse($mesa->fecha_hora_1)->addWeeks(2)->isPast()) {
-                            $mesa->activo = false;
-                            $mesa->save(); // Guardar el cambio en la base de datos
-                        }
-                        return $mesa;
-                    });
+   // Filtra mesas y actualiza su estado
+   $mesas = Mesa::with(['personalPresidente', 'personalAuxiliar', 'materia', 'curso'])
+   //->whereIn('curso_materia_id', $curso_materia_ids)
+   ->get();
+   /*
+   ->map(function ($mesa) {
+       // Si han pasado más de dos semanas, desactivar la mesa
+       if (Carbon::parse($mesa->fecha_hora_1)->addWeeks(2)->isPast()) {
+           $mesa->activo = false;
+           $mesa->save(); // Guardar el cambio en la base de datos
+       }
+       return $mesa;
+   });*/
+                    
+   return Inertia::render('Alumnos/Mesas/Index', [
+      'carrera' => $alumnoCarrera, 
+      'mesas' => $mesas,
+      'mesas_alumno' => MesaAlumno::where('alumno_carrera_id', $alumnoCarrera->id)->get(),
+   ]);
+}
 
-        return Inertia::render('Alumnos/Mesas/Index', [
-            'carrera' => $alumnoCarrera, 
-            'mesas' => $mesas,
-            'mesas_alumno' => MesaAlumno::where('alumno_carrera_id', $alumnoCarrera->id)->get(),
-        ]);
+
+/*
+    public function store($mesa_id)
+    {
+         MesaAlumno::create([
+            'mesa_id' => $request->mesa_id,
+            'alumno_carrera_id' => $request->alumno_carrera_id,
+            'cursada_alumno_id' => $request->cursada_alumno_id,
+            'mesa_alumno_estado_id' => $request->mesa_alumno_estado_id,
+            'nota_numerica' => $request->nota_numerica
+         ]);
     }
-
-
-
-
-
-
+*/
     public function updateSelectedMesas(Request $request)
     {
         $user = $request->user(); // Obtener el usuario autenticado

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class MesaAlumno extends Model
 {
     use HasFactory;
-    protected $table = 'personal';
+    protected $table = 'mesa_alumnos';
     protected $fillable = [
         'mesa_id',
         'alumno_carrera_id',

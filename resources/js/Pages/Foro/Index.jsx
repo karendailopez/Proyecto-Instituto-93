@@ -3,7 +3,7 @@ import { useState } from 'react';
 import PublicLayout from '@/Layouts/PublicLayout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
-import '../../../css/public.css';
+import '../../../css/foro.css';
 
 /*
 export default function Index({ entradas }) {
@@ -49,17 +49,20 @@ export default function Index({ entradas }) {
     };
 
 */
+
     return (
         <>
-            <PublicLayout carteles={true} />
+            <PublicLayout onlyNav={true} />
             <hr />
-
+            <button className="custom-button">Crear Entrada</button>
             <div className="flex flex-col items-center px-5 foro-w ml-5">
                 {entradas.map((entrada) => {
                     const etiquetasArray = typeof entrada.etiquetas === 'string' ? JSON.parse(entrada.etiquetas) : entrada.etiquetas;
 
                     return (
-                        <div key={entrada.id} className="container w-full mb-5">
+                        
+                        <div key={entrada.id} className="container w-full mb-5 entrada">
+
                             <div className="shadow-lg">
                                 <div className="flex flex-col sm:flex-row items-center p-5">
                                     <h3 className="text-m">{entrada.titulo}</h3>
@@ -72,11 +75,18 @@ export default function Index({ entradas }) {
                                         </span>
                                     ))}
                                 </div>
-                                <div className="p-5 py-4 flex justify-between items-center">
-                                    <span className="text-red text-xs">Denuncias: {entrada.denuncias.length}</span>
-                                    <span className="text-gray text-xs">Votos: {entrada.votos.length}</span>
-                                    
-                                </div>
+                                <div className="p-5 py-4 flex justify-between items-start footer-entrada">
+                                    {/* <!-- Columna izquierda --> */}
+                                    <div className="flex flex-col items-start">
+                                        <span className="text-gray text-xs">Me gustas: {entrada.votos.length}    </span>
+                                        <a href="#" className="btn_votar mt-2">
+                                        <i className="fa fa-thumbs-up" aria-hidden="true"></i> Me gusta
+                                        </a>
+                                    </div>
+
+                                    {/* <!-- Columna derecha --> */}
+                                    <span className="text-red text-xs self-start">Denuncias: {entrada.denuncias.length}</span>
+                                    </div>
                             </div>
                         </div>
                     );

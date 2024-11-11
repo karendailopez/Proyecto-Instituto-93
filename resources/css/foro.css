@@ -1,0 +1,65 @@
+.footer-entrada{
+    background: #b9c5d0;
+}
+.entrada{
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 10px;
+    height: auto;          /* Se ajusta según el contenido */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.footer-entrada {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alinea verticalmente al inicio */
+  }
+  
+  .btn_votar {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .btn_votar:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .btn_votar i {
+    margin-right: 6px; /* Espacio entre el ícono y el texto */
+  }
+  
+  .text-gray {
+    color: #6c757d;
+  }
+  
+  .text-red {
+    color: #dc3545;
+  }
+  .custom-button {
+    font-size: 20px; /* Aumenta el tamaño del texto */
+    padding: 10px 20px; /* Hace que el botón sea más grande */
+    margin: 20px 0; /* Agrega espacio alrededor del botón */
+    margin-left: 100px;
+    background-color: #007BFF; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Elimina bordes predeterminados */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  }
+  
+  .custom-button:hover {
+    background-color: #0056b3; /* Cambia el color cuando el mouse pasa por encima */
+  }
+  .entrada:hover{
+    cursor: pointer;
+    transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }

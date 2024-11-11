@@ -1,0 +1,136 @@
+ /*disenio del blog*/
+  
+ .mb-4{
+    width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .mb-4:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+  .py-4{
+    width: 100%; /* Ocupa el 100% del ancho de la pantalla */
+    
+    justify-content: center;
+   
+    color: white;
+    font-family: Arial, sans-serif;
+    
+        background: linear-gradient(135deg, #b9b9b9, #1a7ad4); /* Fondo degradado */
+  }
+  .dropdown-menu{
+    background: black;
+    border-radius: 2px;
+  
+  }
+  
+  .dropdown-menu .dropdown-item{
+    color: blue;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-right: 20px;
+  }
+  .navbar{
+    background: #3a45a8;
+  }
+  .nav-link{
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-right: 20px;
+    position: relative;
+  }
+  
+  .nav-link:hover{
+    color: #264d96;
+  }
+  
+  .nav-link ::before{
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: blue;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+  }
+  
+  .nav-link:hover::before{
+    opacity: 1;
+    width: 70%;
+    cursor: pointer;
+  }
+  .navbar-dark, .navbar[data-bs-theme=dark]{
+    background: #ffffff ;
+  
+  }
+  
+  #noti{
+    height: 100px;
+    width: 450px;
+  }
+  .article-img-left {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .article-img-left img {
+    margin-right: 1rem;
+    width: 150px;
+    height: auto;
+  }
+  .titulo-pequeno {
+    font-size: 16px;
+  }
+  .text-muted{
+    font-size: 10px;
+  }
+  .custom-card {
+    width: 48%;  /* Controla el ancho de las cards */
+    max-height: 50%;    /* Asegura que la card tenga una altura proporcional */
+    box-sizing: border-box;
+    padding: 10px;
+  }
+  
+  .custom-card img {
+    width: 100%;  /* Asegura que las imágenes se ajusten al ancho de la card */
+    height: auto;
+  }
+  
+  .custom-card h2 {
+    font-size: 1.25rem;  /* Ajusta el tamaño del título */
+  }
+  
+  .card-size .btn  {
+    width: 100%;  /* Hace que el botón ocupe todo el ancho disponible */
+    margin-top: auto;  /* Empuja el botón hacia la parte inferior */
+  }
+  /* Establecer un tamaño consistente para las tarjetas */
+.card-size {
+    width: 100%; /* Ocupa el 100% del ancho disponible */
+    max-height: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  /* Para hacer que las tarjetas sean más grandes */
+  .col-md-4 {
+    flex: 1 1 33%; /* Tres tarjetas por fila */
+    margin-bottom: 30px; /* Añadir un espacio debajo de las tarjetas */
+  }
+  .card-principal{
+    padding: 10px;
+  }
+  .card-principal .btn{
+    width: 100%;  /* Hace que el botón ocupe todo el ancho disponible */
+    margin-top: auto;  /* Empuja el botón hacia la parte inferior */
+  }

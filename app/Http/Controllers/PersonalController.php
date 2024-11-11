@@ -67,8 +67,6 @@ class PersonalController
     {
         $personal = Personal::find($request->id);
 
-        
-
         $personal->fill( $request->validated() );
 
         $personal->save();

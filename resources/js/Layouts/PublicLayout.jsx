@@ -5,7 +5,7 @@ import '../../css/public.css';
 import { Link } from '@inertiajs/react';
 import {useEffect} from "react";
 
-export default function PublicLayout({ children, carteles=false }) {
+export default function PublicLayout({ children, onlyNav=false }) {
     useEffect(() => {
         document.body.classList.remove('main');
     }, []);
@@ -42,13 +42,20 @@ export default function PublicLayout({ children, carteles=false }) {
                                    Login
                                </Link>
                            </li>
+                           <li className="nav-item">
+                               <Link href={route('blog')} className="nav-link navbar-link text-dark">
+                                   Blog
+                               </Link>
+                           </li>
+                           
+                           
                        </ul>
                    </div>
                </div>
            </nav>
 
 
-           {!carteles && (
+           {!onlyNav && (
             <>
            <div>
                <div className="card mb-3" style={{width: '100%', minHeight: '40vh'}}>
@@ -77,7 +84,7 @@ export default function PublicLayout({ children, carteles=false }) {
                </div>
            </main>
 
-           {!carteles && (
+           {!onlyNav && (
             <>
            <div className="container">
                <footer className="d-flex flex-wrap justify-content-between py-3 my-4 border-top gap-3">

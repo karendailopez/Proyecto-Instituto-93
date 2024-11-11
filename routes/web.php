@@ -27,6 +27,7 @@ Route::get('/inscripcion-carrera', [\App\Http\Controllers\InscripcionController:
 Route::get('/inscripcion-materia', [\App\Http\Controllers\InscripcionController::class, 'materia'])->name('inscripcion-materia');
 Route::get('/foro', [\App\Http\Controllers\ForoController::class, 'index'])->name('foro');
 Route::post('/foro', [\App\Http\Controllers\ForoController::class, 'store']);
+Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name('blog');
 Route::get('/verificar-alumno/{email}', [\App\Http\Controllers\InscripcionController::class, 'verificar'])->name('verificar-alumno');
 Route::post('/inscripcion', [\App\Http\Controllers\InscripcionController::class, 'store'])->name('inscripcion.store');
 

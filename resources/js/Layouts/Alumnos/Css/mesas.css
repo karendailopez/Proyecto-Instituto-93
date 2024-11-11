@@ -1,0 +1,15 @@
+.custom-button {
+    font-size: 20px; /* Aumenta el tamaño del texto */
+    padding: 10px 20px; /* Hace que el botón sea más grande */
+    margin: 20px 0; /* Agrega espacio alrededor del botón */
+    background-color: #007BFF; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Elimina bordes predeterminados */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  }
+  
+  .custom-button:hover {
+    background-color: #0056b3; /* Cambia el color cuando el mouse pasa por encima */
+  }
+  

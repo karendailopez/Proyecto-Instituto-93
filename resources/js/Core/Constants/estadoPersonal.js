@@ -1,4 +1,4 @@
 export default {
-    ALTA: 1,
-    BAJA: 2,
+    ACTIVA: 1,
+    INACTIVA: 2,
 };
