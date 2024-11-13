@@ -25,9 +25,17 @@ Route::get('/dashboard', function () { return Inertia::render('Dashboard');})
 
 Route::get('/inscripcion-carrera', [\App\Http\Controllers\InscripcionController::class, 'carrera'])->name('inscripcion-carrera');
 Route::get('/inscripcion-materia', [\App\Http\Controllers\InscripcionController::class, 'materia'])->name('inscripcion-materia');
+
+/*FORO*/
 Route::get('/foro', [\App\Http\Controllers\ForoController::class, 'index'])->name('foro');
 Route::post('/foro', [\App\Http\Controllers\ForoController::class, 'store']);
+Route::get('/foro/crearEntrada', [\App\Http\Controllers\ForoController::class, 'crearEntrada'])->name('foro.crearEntrada');
+Route::post('/foro/insertarEntrada',[App\Http\Controllers\ForoController::class,'insertarEntrada'])->name('foro.insertarEntrada');
+Route::post('/foro/votar',[App\Http\Controllers\ForoController::class,'votar'])->name('foro.votar');
+
+/*BLOG*/
 Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name('blog');
+
 Route::get('/verificar-alumno/{email}', [\App\Http\Controllers\InscripcionController::class, 'verificar'])->name('verificar-alumno');
 Route::post('/inscripcion', [\App\Http\Controllers\InscripcionController::class, 'store'])->name('inscripcion.store');
 

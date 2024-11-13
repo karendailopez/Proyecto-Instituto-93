@@ -30,9 +30,11 @@ class PersonalController
     {
         return Inertia::render('Admin/Personal/Create');
     }
-    public function store(PersonalRequest $request) : RedirectResponse
+    public function store(Request $request) : RedirectResponse
     {
+        dd($request);
         Personal::create([
+           
             'numeroDocumento' => $request->numeroDocumento,
             'nombre' => $request->nombre,
             'apellido' => $request->apellido,
@@ -50,8 +52,9 @@ class PersonalController
             'foto' => $request->foto,
             'titulo' => $request->titulo,
             'tramoPedagogico' => $request->tramoPedagogico,
-            'fechaAlta' => $request->fechaAlta,
-            'fechaBaja' => $request->fechaBaja, 
+            'personalEstado'=> $request->personalEstado
+            // 'fechaAlta' => $request->fechaAlta,
+            // 'fechaBaja' => $request->fechaBaja, 
             
         ]);
 
@@ -67,7 +70,7 @@ class PersonalController
     {
         $personal = Personal::find($request->id);
 
-        $personal->fill( $request->validated() );
+        $personal->fill( $request->validate() );
 
         $personal->save();
 
@@ -83,4 +86,5 @@ class PersonalController
 
         return Redirect::route('admin.personal.index');
     }
+    
 }

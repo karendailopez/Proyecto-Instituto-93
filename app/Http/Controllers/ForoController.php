@@ -6,11 +6,13 @@ use App\Models\ForoEntrada;
 use App\Models\ForoVoto;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ForoController
 {
     public function index() {
         $entradas = ForoEntrada::with(['comentarios', 'votos', 'denuncias'])->get();
+        
         return Inertia::render('Foro/Index', ['entradas' => $entradas]);
     }
     /*
@@ -44,26 +46,50 @@ class ForoController
         return redirect()->route('foro.index');
     }
 
-    public function votar(Request $request, $id)
+    public function votar(Request $request)
     {
-        // Buscar la entrada por su ID
-        $entrada = ForoEntrada::find($id);
+        // Preparar los datos del voto
+        $voteData = [
+            'user_id' => $request->user_id,
+            'foro_entrada_id' => $request->foro_entrada_id
+        ];
 
-        if ($entrada) {
-            // Registrar el voto en la tabla foro_votos
-            ForoVoto::create([
-                'foro_entrada_id' => $entrada->id,
-                'usuario_id' => auth()->id(),  // El ID del usuario que vota
-            ]);
+        dd($request);
+        // Caso de entrada
+        $vote = ForoVoto::where('foro_comentario_id', $request->foro_comentario_id)
+        ->where('user_id', $request->user_id)
+        ->where('foro_entrada_id', $request->foro_entrada_id)
+        ->first();
 
-            // Contar los votos totales para la entrada
-            $totalVotos = ForoVoto::where('foro_entrada_id', $entrada->id)->count();
+        dd($vote);
 
-            // Retornar la nueva cantidad de votos
-            return response()->json(['total_votos' => $totalVotos], 200);
-        } else {
-            return response()->json(['error' => 'Entrada no encontrada'], 404);
+        if ($vote) {
+        $vote->delete();
         }
+        else
+        {
+            // Crear el voto para la entrada
+            ForoVoto::create($voteData);
+        }
+    }
+    public function crearEntrada()
+    {
+        
+        return Inertia::render('Foro/crearEntrada');
+    }
+    public function insertarEntrada(Request $request)
+    {
+        // Crear una nueva entrada
+        $entrada = new ForoEntrada();
+        $entrada->titulo = $request->titulo;
+        $entrada->slug = Str::slug($request->titulo); // Genera el slug a partir del título
+        $entrada->texto_html = $request->texto_html;
+        $entrada->user_id = $request->user_id;
+        $entrada->etiquetas = json_encode($request->etiquetas);//gurado las etiquetas en gformato JSON
+        $entrada->estado_entrada_id = $request->estado_entrada_id;
+        $entrada->cantidad_visitas = $request->cantidad_visitas;
+        $entrada->save();
+       
     }
     
     

@@ -15,7 +15,7 @@ const Disenio = ({ mesas, checkSeleccionados}) => {
                                 </h2>
                                 <div className="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
                                     <label className="form-check-label ml-0 sm:ml-2" htmlFor={`show-example-${mesa.id}`}>Inscribirse</label>
-                                    <input id={`show-example-${mesa.id}`} data-target="#basic-datepicker" className="show-code form-check-switch mr-0 ml-3" type="checkbox" onClick={checkSeleccionados}/>
+                                    <input id={`show-example-${mesa.id}`} data-target="#basic-datepicker" className="show-code form-check-switch mr-0 ml-3" type="checkbox" onClick={() => checkSeleccionados(mesa.id)}/>
                                 </div>
                             </div>
                             <div className="p-5">

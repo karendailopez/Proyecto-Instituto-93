@@ -1,8 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
+import { useForm } from '@inertiajs/react';
 import PublicLayout from '@/Layouts/PublicLayout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
+import { Link } from '@inertiajs/react';
 import '../../../css/foro.css';
 
 /*
@@ -18,45 +20,44 @@ export default function Index({ entradas }) {
 };*/
 
 export default function Index({ entradas }) {
-/*
-    const [entradasConVotos, setEntradasConVotos] = useState(entradas);
 
-    const handleVotar = async (entradaId) => {
-        try {
-            const response = await fetch(`/web/foro/entradas/${entradaId}/votar`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ id: entradaId })
+    const { data, setData, post } = useForm({
+        user_id: 2,
+        foro_entrada_id: 0,
+        foro_comentario_id: 0
+    });
+    const entradasOrdenas = entradas.reverse()
+
+    const darLike = (idEntrada, idComentario) =>
+    {
+        try{
+            setData({
+                user_id: 2,
+                foro_entrada_id: idEntrada,
+                foro_comentario_id: 1
             });
+           
 
-            if (response.ok) {
-                const updatedData = await response.json();
-                setEntradasConVotos((prevEntradas) =>
-                    prevEntradas.map((entrada) =>
-                        entrada.id === entradaId
-                            ? { ...entrada, votos: updatedData.total_votos }  
-                            : entrada
-                    )
-                );
-            } else {
-                console.error("Error al votar");
-            }
-        } catch (error) {
-            console.error("Error al conectar con el servidor", error);
+            post(route('foro.votar'))
         }
-    };
-
-*/
-
+        catch{
+            console.log('Error')
+        }
+    }
+    const guardar = () =>{
+        setData({
+            user_id: 2,
+            foro_entrada_id: 1,
+            foro_comentario_id: 1
+        });
+    }
     return (
         <>
             <PublicLayout onlyNav={true} />
             <hr />
-            <button className="custom-button">Crear Entrada</button>
+            <Link href={route('foro.crearEntrada')} className="custom-button" >Crear Entrada</Link>
             <div className="flex flex-col items-center px-5 foro-w ml-5">
-                {entradas.map((entrada) => {
+                {entradasOrdenas.map((entrada) => {
                     const etiquetasArray = typeof entrada.etiquetas === 'string' ? JSON.parse(entrada.etiquetas) : entrada.etiquetas;
 
                     return (
@@ -78,8 +79,12 @@ export default function Index({ entradas }) {
                                 <div className="p-5 py-4 flex justify-between items-start footer-entrada">
                                     {/* <!-- Columna izquierda --> */}
                                     <div className="flex flex-col items-start">
-                                        <span className="text-gray text-xs">Me gustas: {entrada.votos.length}    </span>
-                                        <a href="#" className="btn_votar mt-2">
+                                        <span className="text-gray text-xs" onClick={() => {
+                                            guardar()
+                                            }}>
+                                                Me gustas: {entrada.votos.length}    
+                                        </span>
+                                        <a href="#" className="btn_votar mt-2" onClick={() => darLike(entrada.id, entrada.comentarios.id)}>
                                         <i className="fa fa-thumbs-up" aria-hidden="true"></i> Me gusta
                                         </a>
                                     </div>

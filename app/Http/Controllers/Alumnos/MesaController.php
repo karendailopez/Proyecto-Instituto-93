@@ -69,7 +69,7 @@ class MesaController extends Controller
     public function updateSelectedMesas(Request $request)
     {
         $user = $request->user(); // Obtener el usuario autenticado
-        $alumno = $user->alumno; 
+        $alumno = Alumno::where('user_id', $user->id)->firstOrFail();
         $selectedMesas = $request->input('selectedMesas'); // Obtener el array de ID de mesas seleccionadas
 
         if ($alumno) {

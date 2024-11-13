@@ -6,6 +6,7 @@ import { Head, useForm } from "@inertiajs/react";
 import FormInput from "@/Layouts/Admin/Components/Form/FormInput.jsx";
 import ModalMessage from "@/Components/Modals/ModalMessage.jsx";
 import AppIcon from "@/Components/Icons/AppIcon.jsx";
+import EstadoPersonal from "@/Core/Constants/estadoPersonal";
 
 export default function Create({ }) {
     const breadcrumb = [
@@ -31,9 +32,9 @@ export default function Create({ }) {
         foto: '',
         titulo: '', 
         tramoPedagogico: '',
-        fechaAlta: '',
-        fechaBaja: '', 
-        personalEstado: '', 
+        // fechaAlta: '',
+        // fechaBaja: '', 
+        personalEstado: EstadoPersonal.ACTIVA
     });
 
     const modalRef = useRef(null);
@@ -46,7 +47,7 @@ export default function Create({ }) {
     }
 
     const onReset = () => {
-        reset('numeroDocumento', 'nombre', 'apellido', 'fechaNacimiento', 'sexo','direccion','piso','departamento','localidad','celular','telefono','nacionalidad','email','estadoCivil','foto','titulo','tramoPedagogico','fechaAlta','fechaBaja','personalEstado');
+        reset('numeroDocumento', 'nombre', 'apellido', 'fechaNacimiento', 'sexo','direccion','piso','departamento','localidad','celular','telefono','nacionalidad','email','estadoCivil','foto','titulo','tramoPedagogico','personalEstado');
     }
 
     const onChangeData = ({target}) => {
@@ -120,14 +121,14 @@ export default function Create({ }) {
                     <div className="sm:grid grid-cols-2 gap-2 mt-3">
                         <FormInput name="tramoPedagogico" placeholder="Tramo Pedagogico" type="text"
                                    onChange={onChangeData} value={data.tramoPedagogico} errors={errors}></FormInput>
-                        <FormInput name="fechaAlta" placeholder="Fecha De Alta" type="date"
-                                   onChange={onChangeData} value={data.fechaAlta} errors={errors}></FormInput>
+                        {/* <FormInput name="fechaAlta" placeholder="Fecha De Alta" type="date"
+                                   onChange={onChangeData} value={data.fechaAlta} errors={errors}></FormInput> */}
                     </div>
                     <div className="sm:grid grid-cols-2 gap-2 mt-3">
-                        <FormInput name="fechaBaja" placeholder="Fecha De Baja" type="date"
-                                   onChange={onChangeData} value={data.fechaBaja} errors={errors}></FormInput>
-                        <FormInput name="personalEstado" placeholder="Estado del Personal" type="text"
-                                   onChange={onChangeData} value={data.personalEstado} errors={errors}></FormInput>
+                        {/* <FormInput name="fechaBaja" placeholder="Fecha De Baja" type="date"
+                                   onChange={onChangeData} value={data.fechaBaja} errors={errors}></FormInput> */}
+                        {/* <FormInput name="personalEstado" placeholder="Estado del Personal" type="text"
+                                   onChange={onChangeData} value={data.personalEstado} errors={errors}></FormInput> */}
                     </div>
                 </Form>
             </div>

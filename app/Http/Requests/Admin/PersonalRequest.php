@@ -15,7 +15,7 @@ class PersonalRequest extends FormRequest
             'numeroDocumento' => 'required|string|max:10',
             'nombre' => 'required|string|max:50',
             'apellido' => 'required|string|max:50',
-            'fechadeNacimiento' => 'required|date',
+            'fechaNacimiento' => 'required|date',
             'sexo' => 'required|string|max:1',
             'direccion' => 'required|string|max:250',
             'piso' => 'required|numeric|max:10',
@@ -25,7 +25,10 @@ class PersonalRequest extends FormRequest
             'telefono' => 'required|string|max:50',
             'nacionalidad' => 'required|string|max:150',
             'email' => 'required|string|email|max:250', // Añadí 'email' para validar formato de email
-            'estadocivil'=> 'required|string|max:10',
+            'estadoCivil'=> 'required|string|max:10',
+            'foto'=>'required|string|50',
+            'titulo'=>'required|string|50',
+            'tramoPedagogico'=>'required|tinyint',
             'personalEstado' => 'required|numeric|exists:personal_estados,id' // Añadí 'exists' para validar relación
 
         ];
