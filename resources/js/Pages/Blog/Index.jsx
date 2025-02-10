@@ -5,10 +5,10 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../../../css/blog.css';
 
 
-export default function Index(){
+export default function Index({grupos, articulos}){
     return (
         <PublicLayout onlyNav={true} >
-          <Blog />  
+          <Blog  grupos={grupos} articulos = {articulos}/>  
         </PublicLayout>
     );
 }

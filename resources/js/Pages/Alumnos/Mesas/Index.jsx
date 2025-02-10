@@ -20,25 +20,32 @@ export default function Index({ carrera, mesas, mesas_alumno }) {
         selectedMesas: []  // Estado inicial vacío
     });
 
-    const [mesasSeleccionadas, setmesasSeleccionadas] = useState(
-        mesas_alumno.map(mesa_alumno => mesa_alumno.mesa_id)  // Las mesas ya seleccionadas
+    //State donde se guardan las mesas en donde se incribio el alumno, y en caso de inscribirse en nuevas se guardaran aca
+    const [mesasAlumno, setMesasAlumno] = useState(
+        mesas_alumno.map(mesa_alumno => ({
+                mesa_alumno_id: mesa_alumno.id,
+                mesa_id: mesa_alumno.mesa_id,
+                inscripto: mesa_alumno.mesa_alumno_estado_id == 1 ? true : false,
+                registrar: false
+    }))  // Las mesas donde esta inscripto
     );
 
     // Actualiza el estado de selectedMesas cuando cambia mesasSeleccionadas
     useEffect(() => {
         formuarioEstado.setData({
-            selectedMesas: mesasSeleccionadas
+            selectedMesas: mesasAlumno
         });
-    }, [mesasSeleccionadas]);
+    }, [mesasAlumno]);
 
     // Función para guardar mesas seleccionadas
     const mesasGuardadas = () => {
-        if (mesasSeleccionadas.length === 0) {
+        if (mesasAlumno.length === 0) {
             alert("No hay mesas seleccionadas para guardar.");
             return;
         }
 
-        formuarioEstado.post(route('alumnos.mesas.updateSelected'), {
+        formuarioEstado.post(route('alumnos.mesas.store'), {
+            
             onSuccess: () => {
                 console.log('Mesas guardadas correctamente');
             },
@@ -49,19 +56,36 @@ export default function Index({ carrera, mesas, mesas_alumno }) {
     };
 
     // Función para manejar el cambio de selección de mesas
-    const checkSeleccionados = (mesa_id) => {
-       /* setmesasSeleccionadas(prevState => 
-            prevState.includes(mesa_id)
-                ? prevState.filter(mesa => mesa !== mesa_id)  // Eliminar si está seleccionada
-                : [...prevState, mesa_id]  // Agregar si no está seleccionada
-        );*/
+    const checkSeleccionados = (mesa_id, seleccionado) => {
+
+        setMesasAlumno(prevState => {
+            const mesaExistente = prevState.find(mesa => mesa.mesa_id === mesa_id);
+
+            //Modificacion
+            if (mesaExistente) { 
+                return prevState.map(mesa =>
+                    mesa.mesa_id === mesa_id
+                        ? { ...mesa, inscripto: seleccionado } // Actualizar si existe
+                        : mesa
+                );
+            //Agregado
+            } else { 
+                return [...prevState, { 
+                    mesa_alumno_id: 0,
+                    mesa_id: mesa_id, 
+                    inscripto: seleccionado, 
+                    registrar: true 
+                }]; 
+            }
+        });
     };
+    
 
     return (
         <AlumnosLayout>
             <p>Mesas: Tecnicatura Superior en Análisis, Desarrollo y Programación de Aplicaciones</p>
             
-            <Disenio mesas={mesasFiltradas} checkSeleccionados={checkSeleccionados} />
+            <Disenio mesas={mesasFiltradas} mesasAlumno={mesasAlumno} checkSeleccionados={checkSeleccionados} />
 
             <button className="custom-button" onClick={mesasGuardadas}>Guardar</button>
         </AlumnosLayout>

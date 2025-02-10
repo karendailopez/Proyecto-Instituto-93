@@ -1,87 +1,53 @@
 import React from "react";
 import '../../../css/blog.css';
-const Blog = () => {
+const Blog = ({grupos, articulos}) => {
+  console.log(articulos);
   return (
     <>
+    
       {/* Header */}
       <header className="bg-primary text-white text-center py-4">
         <h1 className="display-4">BLOG - ISFT 93</h1>
         <p className="lead">Un espacio para compartir noticias</p>
       </header>
-
-      {/* Navbar */}
-      <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container py-3">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                      <li class="nav-item">
-                        <a class="nav-link" href="#"> Inicio </a>
-                    </li>
-                          <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                  aria-expanded="false">
-                                  Sistemas
-                              </a>
-                              <ul class="dropdown-menu">
-                                  <li><a class="dropdown-item" href="#">Home1</a></li>
-                                  <li><a class="dropdown-item" href="#">Home2</a></li>
-                                  <li><a class="dropdown-item" href="#">Home3</a></li>
-                              </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                  aria-expanded="false">
-                                  Turismo
-                              </a>
-                              <ul class="dropdown-menu">
-                                  <li><a class="dropdown-item" href="#">Home1</a></li>
-                                  <li><a class="dropdown-item" href="#">Home2</a></li>
-                                  <li><a class="dropdown-item" href="#">Home3</a></li>
-                              </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                  aria-expanded="false">
-                                  Contabilidad
-                              </a>
-                              <ul class="dropdown-menu">
-                                  <li><a class="dropdown-item" href="#">Home1</a></li>
-                                  <li><a class="dropdown-item" href="#">Home2</a></li>
-                                  <li><a class="dropdown-item" href="#">Home3</a></li>
-                              </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                  aria-expanded="false">
-                                  Marketing
-                              </a>
-                              <ul class="dropdown-menu">
-                                  <li><a class="dropdown-item" href="#">Home1</a></li>
-                                  <li><a class="dropdown-item" href="#">Home2</a></li>
-                                  <li><a class="dropdown-item" href="#">Home3</a></li>
-                              </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                  aria-expanded="false">
-                                  Enfermeria
-                              </a>
-                              <ul class="dropdown-menu">
-                                  <li><a class="dropdown-item" href="#">Home1</a></li>
-                                  <li><a class="dropdown-item" href="#">Home2</a></li>
-                                  <li><a class="dropdown-item" href="#">Home3</a></li>
-                              </ul>
-                            </li>
-                    
-                      </ul>
-              </div>
-           </div>
+      <nav className="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+      <div className="container py-3">
+      {grupos.map((grupo) => {
+        return(
+        <div>
+          {/* Navbar */}
+          
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                  aria-label="Toggle navigation">
+                  <span className="navbar-toggler-icon"></span>
+              </button>
+              <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                   {grupo.descripcion}
+                                </a>
+                                <ul className="dropdown-menu" >
+                                    <li><a className="dropdown-item" href="#">Home1</a></li>
+                                    <li><a className="dropdown-item" href="#">Home2</a></li>
+                                    <li><a className="dropdown-item" href="#">Home3</a></li>
+                                </ul>
+                              </li>
+                              
+                      
+                        </ul>
+                </div>
+            
+        </div>
+        )
+        
+          
+      })}
+      </div>
       </nav>
+      
         
 
       {/* Main Content */}
@@ -96,14 +62,10 @@ const Blog = () => {
                   alt="Portada del Artículo 1"
                   className="img-fluid rounded mb-3"
                 />
-                <h2 className="h5 text-primary">JavaScript revoluciona el desarrollo web con las nuevas funcionalidades de ECMAScript 2024</h2>
-                <p className="text-muted">Publicado el 7 de noviembre de 2024</p>
-                <p>
-                Las actualizaciones más recientes en ECMAScript prometen simplificar 
-                la programación asíncrona y mejorar la eficiencia del código.
-                 Los desarrolladores ya están entusiasmados con las nuevas características 
-                 como Pipeline Operators y mejoras en la gestión de módulos.
-                </p>
+                <h2 className="h5 text-primary">{articulos[0].tituto}</h2>
+              <p>
+                {articulos[0].descripcion}
+              </p>
                 <a href="#" className="btn btn-sm btn-outline-primary">
                   Leer más
                 </a>
@@ -257,13 +219,10 @@ const Blog = () => {
                         alt="Portada del Artículo 2"
                         className="img-fluid rounded mb-3"
                       />
-                      <h2 className="h5 text-primary">Inteligencia Artificial en el desarrollo: GitHub Copilot alcanza un nuevo nivel</h2>
+                      <h2 className="h5 text-primary">{articulos[1].tituto}</h2>
                       <p className="text-muted">Publicado el 6 de noviembre de 2024</p>
                       <p>
-                        GitHub Copilot lanza una actualización que integra aprendizaje avanzado
-                        en tiempo real, ofreciendo a los programadores sugerencias más precisas y
-                        soluciones completas basadas en contexto. Esto podría cambiar la forma en
-                        que codificamos.
+                      {articulos[1].descripcion}
                       </p>
                       <a href="#" className="btn btn-sm btn-outline-primary">Leer más</a>
                     </article>

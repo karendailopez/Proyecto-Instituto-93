@@ -18,18 +18,20 @@ class PersonalRequest extends FormRequest
             'fechaNacimiento' => 'required|date',
             'sexo' => 'required|string|max:1',
             'direccion' => 'required|string|max:250',
-            'piso' => 'required|numeric|max:10',
-            'departamento' => 'required|string|max:10',
+            'piso' => 'nullable|numeric|max:10',
+            'departamento' => 'nullable|string|max:10',
             'localidad' => 'required|string|max:250',
-            'celular' => 'required|string|max:50',
-            'telefono' => 'required|string|max:50',
+            'celular' => 'nullable|string|max:50',
+            'telefono' => 'nullable|string|max:50',
             'nacionalidad' => 'required|string|max:150',
             'email' => 'required|string|email|max:250', // Añadí 'email' para validar formato de email
-            'estadoCivil'=> 'required|string|max:10',
-            'foto'=>'required|string|50',
-            'titulo'=>'required|string|50',
-            'tramoPedagogico'=>'required|tinyint',
-            'personalEstado' => 'required|numeric|exists:personal_estados,id' // Añadí 'exists' para validar relación
+            'estadoCivil'=> 'nullable|required|string|max:10',
+            'foto'=>'nullable|string|50',
+            'titulo'=>'nullable|string|50',
+            'tramoPedagogico'=>'nullable|boolean',
+            'personalEstado' => 'required|numeric|exists:personal_estados,id', // Añadí 'exists' para validar relación
+            'fechaAlta'=>'nullable|date',
+            'fechaBaja' => 'nullable|date',
 
         ];
     }

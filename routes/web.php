@@ -31,7 +31,9 @@ Route::get('/foro', [\App\Http\Controllers\ForoController::class, 'index'])->nam
 Route::post('/foro', [\App\Http\Controllers\ForoController::class, 'store']);
 Route::get('/foro/crearEntrada', [\App\Http\Controllers\ForoController::class, 'crearEntrada'])->name('foro.crearEntrada');
 Route::post('/foro/insertarEntrada',[App\Http\Controllers\ForoController::class,'insertarEntrada'])->name('foro.insertarEntrada');
-Route::post('/foro/votar',[App\Http\Controllers\ForoController::class,'votar'])->name('foro.votar');
+Route::post('/foro/insertarComentario',[App\Http\Controllers\ForoController::class,'insertarComentario'])->name('foro.insertarComentario');
+Route::post('/foro/votar/{idEntrada}',[App\Http\Controllers\ForoController::class,'votar'])->name('foro.votar');
+Route::get('/foro/entrada/{idEntrada}', [App\Http\Controllers\ForoController::class, 'entrada'])->name('foro.entrada');
 
 /*BLOG*/
 Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name('blog');

@@ -65,8 +65,6 @@ export default function Edit({personal}) {
         'titulo',
         'tramoPedagogico',
         'fechaAlta',
-        'fechaBaja',
-        'personalEstado',
         'created_at',
         'modified_at'
         );
@@ -101,8 +99,8 @@ export default function Edit({personal}) {
                     </div>
                     
                     <div className="sm:grid grid-cols-2 gap-2 mt-3">
-                    <FormSelect name="sexo" items={sexos} label="Sexo"
-                                onChange={onChangeData} value={data.sexo} errors={errors} />
+                    <FormInput name="sexo" placeholder="Sexo" type="text"
+                                   onChange={onChangeData} value={data.sexo} errors={errors}></FormInput>
                         <FormInput name="direccion" placeholder="Direccion" type="text"
                                    value={data.direccion} onChange={onChangeData} errors={errors}></FormInput>
                     </div>
@@ -143,17 +141,12 @@ export default function Edit({personal}) {
                     </div>
                    
                     <div className="sm:grid grid-cols-2 gap-2 mt-3">
-                    <FormInput name="tramoPedagogico" placeholder="Tramo Pedagogico" type="text"
-                                   value={data.tramoPedagogico} onChange={onChangeData} errors={errors} ></FormInput>
+                    <FormRadio name="tramoPedagogico" label="Tramo Pedagógico" checked={data.tramoPedagogico}
+                                onChange={onChangeData} />      
                     <FormInput name="fechaAlta" placeholder="Fecha de Alta" type="date"
                                    value={data.fechaAlta} onChange={onChangeData} errors={errors}></FormInput>
                     </div>
                     
-                    <div className="sm:grid grid-cols-2 gap-2 mt-3">
-                    <FormInput name="fechaBaja" placeholder="Fecha de Baja" type="date"
-                                   value={data.fechaBaja} onChange={onChangeData} errors={errors}></FormInput>
-                    
-                    </div>
 
                 </Form>
             </div>

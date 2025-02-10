@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,12 +16,28 @@ class ForoComentario extends Model
         'foro_comentario_id',
         'estado_comentario_id'
     ];
-    public function foroentrada() : BelongsTo
+
+    // Relación correcta con ForoEntrada
+    public function foroentrada(): BelongsTo
     {
-        return $this->belongsTo(ForoEntrada::class, 'id');
+        return $this->belongsTo(ForoEntrada::class, 'foro_entrada_id');
     }
-    public function user() : BelongsTo
+
+    // Relación correcta con User
+    public function usuario()
     {
         return $this->belongsTo(User::class, 'id');
+    }
+
+    // Un comentario puede tener muchos votos
+    public function votos()
+    {
+        return $this->hasMany(ForoVoto::class);
+    }
+
+    // Un comentario puede tener respuestas (otros comentarios)
+    public function comentarios()
+    {
+        return $this->hasMany(ForoComentario::class, 'foro_comentario_id');
     }
 }

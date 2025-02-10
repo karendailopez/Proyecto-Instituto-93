@@ -1,41 +1,80 @@
-import React from 'react';
-
+import React , { useState } from 'react';
+import PublicLayout from '@/Layouts/PublicLayout';
+import SeccionComentario from "@/Layouts/Foro/SeccionComentario";
+import '../../../css/foro.css';
+import { useForm } from '@inertiajs/react';
 
 export default function Detalle({ entrada }) {
-    // Aseguramos que etiquetas sea un array, convirtiéndolo si es necesario
-    const etiquetasArray = typeof entrada.etiquetas === 'string' ? JSON.parse(entrada.etiquetas) : entrada.etiquetas;
+    /*Metodo para subir un comentario*/
+      const { data, setData, post } = useForm({
+        texto_html: '',
+        user_id: 3,
+        foro_entrada_id: 9, 
+        foro_comentario_id: '',
+        estado_comentario_id: 1
+    });
+    const Submit = (event) => {
+        event.preventDefault()
 
+        try{
+            post(route('foro.insertarComentario'))
+            alert('Comenatario creado exitosamente')
+        }
+        catch{
+          alert('No se pudo subir el comentario')
+        }
+    }
+    const cambioInput = (event) => {
+      const { name, value } = event.target;
+      setData(name, value); // 🔴 Ahora sí actualiza correctamente el estado
+    };
+    
+    const [comments] = useState(entrada.comentarios || []);
     return (
-        <div className="max-w-2xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
-            <div className="px-6 py-4">
-                <h1 className="text-2xl font-bold mb-2 text-gray-800">{entrada.titulo}</h1>
-                <p className="text-gray-700 text-base">{entrada.texto_html}</p>
-            </div>
+      
+        <div className="flex flex-col items-center px-5 w-full">
+          
+          <PublicLayout onlyNav={true} />
+          
+          <div className="w-full max-w-screen-lg bg-white shadow-lg rounded-2xl p-6 entradas2 bor">
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">
+              {entrada.titulo}
+            </h1>
+            <p className="text-gray-700">{entrada.texto_html}</p>
+          </div>
 
-            <div className="px-6 pt-4 pb-2">
-                <h2 className="text-gray-600 font-semibold mb-2">Etiquetas:</h2>
-                {Array.isArray(etiquetasArray) && etiquetasArray.map((etiqueta, index) => (
-                    <span key={index} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                        #{etiqueta} 
-                    </span>
-                ))}
-            </div>
-
-            <div className="px-6 py-4 flex justify-between">
-                <span className="text-gray-600">Votos: {entrada.votos.length}</span>
-                <span className="text-red-600">Denuncias: {entrada.denuncias.length}</span>
-            </div>
-
-            <div className="px-6 py-4">
-                <h2 className="text-gray-600 font-semibold mb-2">Comentarios ({entrada.comentarios.length}):</h2>
-                {entrada.comentarios.map(comentario => (
-                    <div key={comentario.id} className="mb-4 bg-gray-100 rounded-lg p-4 shadow-inner">
-                        <p className="text-gray-700">{comentario.texto_html}</p>
-                        <div className="text-sm text-gray-600 mt-2">Votos: {comentario.votos.length}</div>
-                    </div>
-                ))}
-            </div>
+          {/*Seccion donde se muestran los comentarios*/}
+          <div className="mt-20">
+                    <h2 className="text-2xl font-bold m-4 text-center">Comentarios</h2>
+                    <SeccionComentario
+                        comments={comments} 
+                    />
+          </div>
+          <form className='formulario' onSubmit={Submit}>
+          <div className="mb-3 w-full max-w-screen-lg">
+            <label htmlFor="exampleFormControlTextarea1" className="form-label labelcom">
+              Comentar: 
+            </label>
+            <textarea 
+              className="form-control w-full p-2 border rounded-md bordecom" 
+              id="exampleFormControlTextarea1" 
+              name="texto_html"  
+              rows="3" 
+              value={data.texto_html} 
+              type="text" 
+              autoComplete="off" 
+              onChange={cambioInput} 
+            />
+          </div>
+          {/* Botón para enviar */}
+          <button
+            className="btnenviar"
+          >
+            Enviar
+          </button>
+          </form>
+          
         </div>
-        
-    );
+      );
+      
 }

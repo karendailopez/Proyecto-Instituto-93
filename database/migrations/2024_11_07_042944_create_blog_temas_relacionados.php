@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('blog_temas_relacionados', function (Blueprint $table) {
             $table->id();
+            $table->string('descripcion');
+            $table->string('codigo');
             $table->timestamps();
         });
     }

@@ -30,7 +30,7 @@ class PersonalController
     {
         return Inertia::render('Admin/Personal/Create');
     }
-    public function store(PersonalRequest $request) : RedirectResponse
+    public function store(Request $request) : RedirectResponse
     {
         Personal::create([
             'numeroDocumento' => $request->numeroDocumento,
@@ -50,8 +50,8 @@ class PersonalController
             'foto' => $request->foto,
             'titulo' => $request->titulo,
             'tramoPedagogico' => $request->tramoPedagogico,
+            'personalEstado'=> 1,
             'fechaAlta' => $request->fechaAlta,
-            'fechaBaja' => $request->fechaBaja, 
             
         ]);
 

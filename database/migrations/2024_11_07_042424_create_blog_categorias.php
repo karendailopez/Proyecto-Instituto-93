@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('blog_categorias', function (Blueprint $table) {
             $table->id();
+            $table->string('descripcion', 256);
+            $table->string('slug', 256);
+            $table->integer('blog_grupo_id');
+            $table->string('portada_baja_url', 255)->nullable();
+            $table->string('portada_alta_url', 255)->nullable();
             $table->timestamps();
         });
     }

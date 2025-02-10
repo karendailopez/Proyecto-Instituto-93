@@ -19,9 +19,9 @@ class ForoEntrada extends Model
         'estado_entrada_id',
         'cantidad_visitas'
     ];
-    public function user() : BelongsTo
+    public function usuario()
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(user::class, 'user_id');
     }
     public function comentarios() 
     {

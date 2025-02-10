@@ -4,9 +4,12 @@ import AdminTitle from "@/Layouts/Admin/Components/AdminTitle.jsx";
 import Form from '@/Layouts/Admin/Components/Form/Form.jsx';
 import { Head, useForm } from "@inertiajs/react";
 import FormInput from "@/Layouts/Admin/Components/Form/FormInput.jsx";
+import FormRadio from '@/Layouts/Admin/Components/Form/FormRadio.jsx';
 import ModalMessage from "@/Components/Modals/ModalMessage.jsx";
+import { estados_civil } from '@/Core/Jsons';
 import AppIcon from "@/Components/Icons/AppIcon.jsx";
 import EstadoPersonal from "@/Core/Constants/estadoPersonal";
+import FormSelect from "@/Layouts/Admin/Components/Form/FormSelect/FormSelect.jsx";
 
 export default function Create({ }) {
     const breadcrumb = [
@@ -32,8 +35,8 @@ export default function Create({ }) {
         foto: '',
         titulo: '', 
         tramoPedagogico: '',
-        // fechaAlta: '',
-        // fechaBaja: '', 
+        fechaAlta: '',
+        fechaBaja: '', 
         personalEstado: EstadoPersonal.ACTIVA
     });
 
@@ -47,7 +50,8 @@ export default function Create({ }) {
     }
 
     const onReset = () => {
-        reset('numeroDocumento', 'nombre', 'apellido', 'fechaNacimiento', 'sexo','direccion','piso','departamento','localidad','celular','telefono','nacionalidad','email','estadoCivil','foto','titulo','tramoPedagogico','personalEstado');
+        reset('numeroDocumento', 'nombre', 'apellido', 'fechaNacimiento', 'sexo','direccion','piso','departamento','localidad','celular','telefono',
+            'nacionalidad','email','estadoCivil','foto','titulo','tramoPedagogico','fechaAlta','fechaBaja','personalEstado');
     }
 
     const onChangeData = ({target}) => {
@@ -109,8 +113,8 @@ export default function Create({ }) {
                     <div className="sm:grid grid-cols-2 gap-2 mt-3">
                         <FormInput name="email" placeholder="Email" type="text"
                                    onChange={onChangeData} value={data.email} errors={errors}></FormInput>
-                        <FormInput name="estadoCivil" placeholder="Estado Civil" type="text"
-                                   onChange={onChangeData} value={data.estadoCivil} errors={errors}></FormInput>
+                        <FormSelect name="estadocivil" items={estados_civil} label="Estado Civil"
+                                onChange={onChangeData} value={data.estadoCivil} errors={errors} />
                     </div>
                     <div className="sm:grid grid-cols-2 gap-2 mt-3">
                         <FormInput name="foto" placeholder="Foto" type="text"
@@ -119,10 +123,10 @@ export default function Create({ }) {
                                    onChange={onChangeData} value={data.titulo} errors={errors}></FormInput>
                     </div>
                     <div className="sm:grid grid-cols-2 gap-2 mt-3">
-                        <FormInput name="tramoPedagogico" placeholder="Tramo Pedagogico" type="text"
-                                   onChange={onChangeData} value={data.tramoPedagogico} errors={errors}></FormInput>
-                        {/* <FormInput name="fechaAlta" placeholder="Fecha De Alta" type="date"
-                                   onChange={onChangeData} value={data.fechaAlta} errors={errors}></FormInput> */}
+                    <FormRadio name="tramoPedagogico" label="Tramo Pedagógico" value="1" checked={data.tramoPedagogico}
+                                onChange={onChangeData}/>
+                    <FormInput name="fechaAlta" placeholder="Fecha De Alta" type="date"
+                        onChange={onChangeData} value={data.fechaAlta} errors={errors}></FormInput>
                     </div>
                     <div className="sm:grid grid-cols-2 gap-2 mt-3">
                         {/* <FormInput name="fechaBaja" placeholder="Fecha De Baja" type="date"

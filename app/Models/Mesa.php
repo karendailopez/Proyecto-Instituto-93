@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Mesa extends Model
 {
@@ -50,4 +51,78 @@ class Mesa extends Model
     {
         return $this->hasMany(MesaAlumno::class);
     }
+
+    public static function getMesasPersonal($options)
+    {
+        $query = self::query()
+            ->select('mesas.*')
+            ->with('cursoMateria', 'materia', 'curso', 'personalPresidente', 'personalAuxiliar');
+
+        // Filtro de búsqueda
+        if (isset($options['search']) && !empty($options['search'])) {
+            $search = $options['search'];
+
+            $query = $query->where(function (Builder $qSearch) use ($search) {
+                return $qSearch->whereHas('cursoMateria', function (Builder $qCM) use ($search) {
+                        $qCM->where('nombre', 'like', "%$search%");
+                    })
+                    ->orWhereHas('materia', function (Builder $qM) use ($search) {
+                        $qM->where('nombre', 'like', "%$search%");
+                    })
+                    ->orWhereHas('curso', function (Builder $qC) use ($search) {
+                        $qC->where('nombre', 'like', "%$search%"); 
+                    })
+                    ->orWhereHas('personalPresidente', function (Builder $qPP) use ($search) {
+                        $qPP->where('nombre', 'like', "%$search%")
+                            ->orWhere('apellido', 'like', "%$search%");
+                    })
+                    ->orWhereHas('personalAuxiliar', function (Builder $qPA) use ($search) {
+                        $qPA->where('nombre', 'like', "%$search%") 
+                            ->orWhere('apellido', 'like', "%$search%");
+                    });
+            });
+        }
+
+        // Retornar la consulta para poder paginar más tarde
+        return $query;
+    }
+
+
+
+    public static function getMesas($options)
+    {
+        $query = self::query()
+            ->select('mesas.*')
+            ->with('cursoMateria', 'materia', 'curso', 'personalPresidente', 'personalAuxiliar');
+
+        // Filtro de búsqueda
+        if (isset($options['search'])) {
+            $search = $options['search'];
+
+            $query = $query->where(function (Builder $qSearch) use ($search) {
+                return $qSearch->whereHas('cursoMateria', function (Builder $qCM) use ($search) {
+                        $qCM->where('nombre', 'like', "%$search%");
+                    })
+                    ->orWhereHas('materia', function (Builder $qM) use ($search) {
+                        $qM->where('nombre', 'like', "%$search%");
+                    })
+                    ->orWhereHas('curso', function (Builder $qC) use ($search) {
+                        $qC->where('nombre', 'like', "%$search%");
+                    })
+                    ->orWhereHas('personalPresidente', function (Builder $qPP) use ($search) {
+                        $qPP->where('nombre', 'like', "%$search%")
+                            ->orWhere('apellido', 'like', "%$search%");
+                    })
+                    ->orWhereHas('personalAuxiliar', function (Builder $qPA) use ($search) {
+                        $qPA->where('nombre', 'like', "%$search%")
+                            ->orWhere('apellido', 'like', "%$search%");
+                    });
+            });
+        }
+
+        
+        return $query;
+    }
+
+    
 }

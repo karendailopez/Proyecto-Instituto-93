@@ -1,10 +1,9 @@
 import React from 'react';
 
-const Disenio = ({ mesas, checkSeleccionados}) => {
+const Disenio = ({ mesas, mesasAlumno,checkSeleccionados}) => {
     return (
         <div className="intro-y grid grid-cols-12 gap-6 mt-5">
             {mesas.map((mesa) => {
-                console.log(mesa); 
                 return (
                     <div key={mesa.id} className="col-span-12 lg:col-span-6">
                         <div className="intro-y box">
@@ -13,10 +12,15 @@ const Disenio = ({ mesas, checkSeleccionados}) => {
                                     {/* Verificamos si 'materia' está definido */}
                                     {mesa.materia ? mesa.materia : 'Materia no disponible'}
                                 </h2>
-                                <div className="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
-                                    <label className="form-check-label ml-0 sm:ml-2" htmlFor={`show-example-${mesa.id}`}>Inscribirse</label>
-                                    <input id={`show-example-${mesa.id}`} data-target="#basic-datepicker" className="show-code form-check-switch mr-0 ml-3" type="checkbox" onClick={() => checkSeleccionados(mesa.id)}/>
-                                </div>
+                                <input 
+                                    id={`show-example-${mesa.id}`} 
+                                    data-target="#basic-datepicker" 
+                                    className="show-code form-check-switch mr-0 ml-3" 
+                                    type="checkbox"
+                                    checked={mesasAlumno.find(m => m.mesa_id === mesa.id)?.inscripto || false} 
+                                    onChange={(e) => checkSeleccionados(mesa.id, e.target.checked)} 
+                                />
+
                             </div>
                             <div className="p-5">
                                 <div className="preview">

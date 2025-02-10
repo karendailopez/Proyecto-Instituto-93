@@ -4,15 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\ForoEntrada;
 use App\Models\ForoVoto;
-use Inertia\Inertia;
+use App\Models\ForoComentario;
+use App\Models\ForoDenuncia;
+use App\Models\ForoEtiqueta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Inertia\Inertia;
 
 class ForoController
 {
     public function index() {
         $entradas = ForoEntrada::with(['comentarios', 'votos', 'denuncias'])->get();
-        
+
         return Inertia::render('Foro/Index', ['entradas' => $entradas]);
     }
     /*
@@ -46,25 +50,22 @@ class ForoController
         return redirect()->route('foro.index');
     }
 
-    public function votar(Request $request)
+    public function votar(Request $request, $idEntrada)
     {
         // Preparar los datos del voto
         $voteData = [
             'user_id' => $request->user_id,
-            'foro_entrada_id' => $request->foro_entrada_id
+            'foro_entrada_id' => $idEntrada,
+            'foro_comentario_id' => 1
         ];
 
-        dd($request);
         // Caso de entrada
-        $vote = ForoVoto::where('foro_comentario_id', $request->foro_comentario_id)
-        ->where('user_id', $request->user_id)
-        ->where('foro_entrada_id', $request->foro_entrada_id)
+        $vote = ForoVoto::where('user_id', $request->user_id)
+        ->where('foro_entrada_id', $idEntrada)
         ->first();
 
-        dd($vote);
-
         if ($vote) {
-        $vote->delete();
+            $vote->delete();
         }
         else
         {
@@ -74,7 +75,6 @@ class ForoController
     }
     public function crearEntrada()
     {
-        
         return Inertia::render('Foro/crearEntrada');
     }
     public function insertarEntrada(Request $request)
@@ -91,6 +91,31 @@ class ForoController
         $entrada->save();
        
     }
-    
+    public function insertarComentario(Request $request)
+    {
+        // Crear nuevo comentario
+        $comment = ForoComentario::create([
+            'texto_html' => $request->texto_html, // Texto del comentario en HTML
+            'user_id' =>  $request->user_id, // Usuario autenticado
+            'foro_entrada_id' => $request->foro_entrada_id, // ID de la entrada
+            'foro_comentario_id' => $request->foro_comentario_id, // ID del comentario padre (nulo si es comentario principal)
+           'estado_comentario_id' => $request->estado_comentario_id
+        ]);
+
+               
+       
+    }
+    public function entrada($idEntrada)
+    {
+        $entrada = ForoEntrada::with([
+            'comentarios.usuario',
+            'comentarios.votos',
+            'comentarios.comentarios.votos'
+        ])
+        ->where('id', $idEntrada)
+        ->firstOrFail();
+
+        return Inertia::render('Foro/Entrada', ['entrada' => $entrada]);
+    }
     
 }
