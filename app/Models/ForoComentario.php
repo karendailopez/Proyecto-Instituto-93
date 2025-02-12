@@ -26,7 +26,7 @@ class ForoComentario extends Model
     // Relación correcta con User
     public function usuario()
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     // Un comentario puede tener muchos votos

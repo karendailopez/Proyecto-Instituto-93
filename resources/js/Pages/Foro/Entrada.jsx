@@ -9,7 +9,7 @@ export default function Detalle({ entrada }) {
       const { data, setData, post } = useForm({
         texto_html: '',
         user_id: 3,
-        foro_entrada_id: 9, 
+        foro_entrada_id: entrada.id, 
         foro_comentario_id: '',
         estado_comentario_id: 1
     });
@@ -26,10 +26,22 @@ export default function Detalle({ entrada }) {
     }
     const cambioInput = (event) => {
       const { name, value } = event.target;
-      setData(name, value); // 🔴 Ahora sí actualiza correctamente el estado
+      setData(name, value); 
     };
     
+    //Metodo para dar like a las entradas
+    const darLike = (idEntrada) =>
+      {
+          try{
+              post(route('foro.votar', idEntrada))
+          }
+          catch{
+              console.log('Error')
+          }
+      }
+
     const [comments] = useState(entrada.comentarios || []);
+    console.log(entrada)
     return (
       
         <div className="flex flex-col items-center px-5 w-full">
@@ -41,6 +53,28 @@ export default function Detalle({ entrada }) {
               {entrada.titulo}
             </h1>
             <p className="text-gray-700">{entrada.texto_html}</p>
+            
+              
+                <div className="p-5 py-4 flex justify-between items-start footer-entrada">
+                {/* <!-- Columna izquierda --> */}
+                <div className="flex flex-col items-start">
+                    <a href="#" className="btn_votar mt-2" onClick={() => darLike(entrada.id)}>
+                    <i className="fa fa-thumbs-up megusta" aria-hidden="true"></i> Me gusta
+                    </a>
+                    <span className="text-gray text-xs">
+                        Me gustas: {entrada.votos ? entrada.votos.length : 0}    
+                    </span>
+                    
+                </div>
+
+                {/* <!-- Columna derecha --> */}
+                <span className="text-red text-xs self-start">
+                    Denuncias: {entrada.denuncias ? entrada.denuncias.length : 0}
+                </span>
+          </div>
+              
+                           
+            
           </div>
 
           {/*Seccion donde se muestran los comentarios*/}

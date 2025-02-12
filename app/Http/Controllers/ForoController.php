@@ -19,6 +19,11 @@ class ForoController
 
         return Inertia::render('Foro/Index', ['entradas' => $entradas]);
     }
+    public function entradaActiva() {
+        $entrada = ForoEntrada::with(['comentarios', 'votos', 'denuncias'])->get();
+
+        return Inertia::render('Foro/Entrada', ['entrada' => $entrada]);
+    }
     /*
 
     public function show($slug) {
@@ -55,8 +60,8 @@ class ForoController
         // Preparar los datos del voto
         $voteData = [
             'user_id' => $request->user_id,
-            'foro_entrada_id' => $idEntrada,
-            'foro_comentario_id' => 1
+            'foro_entrada_id' => $idEntrada
+            //'foro_comentario_id' => 1
         ];
 
         // Caso de entrada
@@ -110,7 +115,8 @@ class ForoController
         $entrada = ForoEntrada::with([
             'comentarios.usuario',
             'comentarios.votos',
-            'comentarios.comentarios.votos'
+            'comentarios.comentarios.votos',
+            'comentarios.comentarios.usuario'
         ])
         ->where('id', $idEntrada)
         ->firstOrFail();
