@@ -60,8 +60,8 @@ class ForoController
         // Preparar los datos del voto
         $voteData = [
             'user_id' => $request->user_id,
-            'foro_entrada_id' => $idEntrada
-            //'foro_comentario_id' => 1
+            'foro_entrada_id' => $idEntrada,
+            'foro_comentario_id' => 1
         ];
 
         // Caso de entrada
@@ -116,7 +116,8 @@ class ForoController
             'comentarios.usuario',
             'comentarios.votos',
             'comentarios.comentarios.votos',
-            'comentarios.comentarios.usuario'
+            'comentarios.comentarios.usuario',
+            'votos'
         ])
         ->where('id', $idEntrada)
         ->firstOrFail();

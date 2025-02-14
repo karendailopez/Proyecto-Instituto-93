@@ -58,7 +58,7 @@ const Blog = ({grupos, articulos}) => {
             <section id="articles">
               <article className="mb-4 card-principal">
                 <img
-                  src="https://media.istockphoto.com/id/1020187160/es/foto/desarrollador-de-software-de-trabajo.jpg?s=612x612&w=0&k=20&c=oHs8RmFT0oavjgiAHn3D50RluRoqqtP8s5Qa6XEboPM="
+                  src={articulos[0].portada_baja_url}
                   alt="Portada del Artículo 1"
                   className="img-fluid rounded mb-3"
                 />
@@ -66,7 +66,7 @@ const Blog = ({grupos, articulos}) => {
               <p>
                 {articulos[0].descripcion}
               </p>
-                <a href="#" className="btn btn-sm btn-outline-primary">
+                <a href={route('blog.articulos', articulos.id)} className="btn btn-sm btn-outline-primary">
                   Leer más
                 </a>
               </article>
@@ -215,7 +215,7 @@ const Blog = ({grupos, articulos}) => {
                     {/* Card 1 */}
                     <article className="col-md-4 mb-4 card-size">
                       <img
-                        src="https://media.gettyimages.com/id/1430329171/es/foto/el-ingeniero-de-programaci%C3%B3n-est%C3%A1-trabajando-en-su-oficina.jpg?s=612x612&w=0&k=20&c=b6351TJWwZR08o2VJimq-v_y9cNMCXehFzIE_7bSLvk="
+                        src={articulos[1].portada_baja_url}
                         alt="Portada del Artículo 2"
                         className="img-fluid rounded mb-3"
                       />
@@ -231,17 +231,14 @@ const Blog = ({grupos, articulos}) => {
 
                     <article className="col-md-4 mb-4 card-size">
                       <img
-                        src="https://media.istockphoto.com/id/625727674/es/foto/estrategia-de-marketing-concepto-de-negocio.jpg?s=612x612&w=0&k=20&c=WrxCfBV_YwRNFvXeTDXsp9nexJFnVXdIHz8yb0B0cmQ="
+                        src={articulos[2].portada_baja_url}
                         alt="Portada del Artículo 1"
                         className="img-fluid rounded mb-3"
                       />
-                      <h2 className="h5 text-primary">Estrategias de Marketing Efectivas</h2>
+                      <h2 className="h5 text-primary">{articulos[2].tituto}</h2>
                       <p className="text-muted">Publicado el 7 de noviembre de 2024</p>
                       <p>
-                      Las estrategias de marketing son planes diseñados para promover productos o servicios, atraer clientes y generar ventas.
-                       Incluyen tácticas como la segmentación del mercado, la personalización de mensajes,
-                        el uso de redes sociales, campañas publicitarias y la fidelización de clientes,
-                         con el objetivo de maximizar el impacto y alcanzar las metas comerciales.
+                      {articulos[2].descripcion}
                       </p>
                       <a href="#" className="btn btn-sm btn-outline-primary">Leer más</a>
                     </article>
@@ -249,17 +246,14 @@ const Blog = ({grupos, articulos}) => {
                      {/* Card 3  */}
                     <article className="col-md-4 mb-4 card-size">
                       <img
-                        src="https://media.gettyimages.com/id/1071461664/es/foto/tener-un-recorrido-por-calles-de-la-ciudad.jpg?s=612x612&w=0&k=20&c=8GEj7QI87o7OpsSWiQSk9iQwTGOlUcSR7FDzerAjyo8="
+                        src={articulos[3].portada_baja_url}
                         alt="Portada del Artículo 3"
                         className="img-fluid rounded mb-3"
                       />
-                      <h2 className="h5 text-primary">El Turismo de Experiencias: La Nueva Era de los Viajes</h2>
+                      <h2 className="h5 text-primary">{articulos[3].tituto}</h2>
                       <p className="text-muted">Publicado el 8 de noviembre de 2024</p>
                       <p>
-                      El turismo de experiencias ha ganado popularidad, con los viajeros buscando vivencias únicas
-                       y auténticas en lugar de simplemente visitar destinos turísticos tradicionales. 
-                       Este enfoque pone énfasis en actividades inmersivas, como gastronomía local, deportes 
-                       de aventura
+                      {articulos[3].descripcion}
                       </p>
                       <a href="#" className="btn btn-sm btn-outline-primary">Leer más</a>
                     </article>

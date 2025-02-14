@@ -14,9 +14,18 @@ class BlogController
             ->get();
         
         //Traemos las articulos de cada categoria (Por ahora solo de una categoria)
-        $articulos = BlogArticulo::where('blog_categoria_id', $grupos[0]->categorias[0]->id)
-                ->get();
+        $articulos = BlogArticulo::get();
 
         return Inertia::render('Blog/Index', ['grupos' => $grupos, 'articulos'=> $articulos,]);
+    }
+    public function articulos($idArticulo){
+        $entrada = BlogArticulo::with([
+            'comentarios.usuario'
+        ])
+        ->where('id', $idArticulo)
+        ->firstOrFail();
+
+        return Inertia::render('Blog/Articulos', ['entrada' => $entrada]);
+        
     }
 }

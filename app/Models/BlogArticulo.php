@@ -20,6 +20,7 @@ class BlogArticulo extends Model
         'user_id',
         'blog_categoria_id',
         'temas_relacionados',
+        'created_at'
     ];
 
     public function user() : BelongsTo
@@ -30,5 +31,10 @@ class BlogArticulo extends Model
     public function categoria() : BelongsTo
     {
         return $this->belongsTo( BlogCategoria::class, 'blog_categoria_id' );
+    }
+   
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class);
     }
 }

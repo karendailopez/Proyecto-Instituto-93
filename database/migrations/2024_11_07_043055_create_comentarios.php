@@ -9,18 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('comentarios', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('blog_articulo_id')->constrained('blog_articulos');
+            $table->foreignId('user_id')->constrained('users');
+            $table->text('mensaje');
+            $table->timestamps(); // Incluye created_at y modified_at
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('comentarios');
     }
