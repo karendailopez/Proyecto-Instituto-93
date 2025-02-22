@@ -22,7 +22,7 @@ class Comentario extends Model
         return $this->belongsTo(BlogArticulo::class, 'blog_articulo_id');
     }
 
-    public function autor()
+    public function usuario()
     {
         return $this->belongsTo(User::class, 'user_id');
     }

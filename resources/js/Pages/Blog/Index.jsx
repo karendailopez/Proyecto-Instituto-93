@@ -5,10 +5,24 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../../../css/blog.css';
 
 
-export default function Index({grupos, articulos}){
+export default function Index({grupos, ultimoArticulo, otrosArticulos, articulos,autor}){
     return (
-        <PublicLayout onlyNav={true} >
-          <Blog  grupos={grupos} articulos = {articulos}/>  
-        </PublicLayout>
+      <div>
+  <PublicLayout onlyNav={true} />
+          {console.log('AUTOR')}
+          {console.log(autor)}
+          <Blog  grupos={grupos} ultimoArticulo = {ultimoArticulo} otrosArticulos = {otrosArticulos} articulos = {articulos} autor = {autor}/>  
+        
+         {/* Footer */}
+          <footer className="bg-dark text-white text-center py-4 mt-5">
+          <p className="mb-0">
+            &copy; 2024 Blog Intituto Superior 93. Todos los derechos reservados.
+          </p>
+          <p className="small">
+            Diseñado con <span style={{ color: "red" }}>❤</span>
+          </p>
+        </footer>
+      </div>
+      
     );
 }
