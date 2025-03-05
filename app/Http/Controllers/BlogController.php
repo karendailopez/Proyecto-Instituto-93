@@ -18,9 +18,7 @@ class BlogController
         $articuloss = BlogArticulo::latest()->take(4)->get()->toArray();
         $ultimoArticulo = $articuloss[0] ?? null; // Primer artículo
         $otrosArticulos = array_slice($articuloss, 1, 3); // Los otros 3 artículos
-        $autor = BlogArticulo::with([
-            'user'
-        ]);
+        
 
         // Obtener 3 artículos de Sistemas (ID 1)
         $sistemas = BlogArticulo::join('blog_categorias', 'blog_articulos.blog_categoria_id', '=', 'blog_categorias.id')
@@ -48,8 +46,7 @@ class BlogController
             'grupos' => $grupos,
             'ultimoArticulo' => $ultimoArticulo,
             'otrosArticulos' => $otrosArticulos,
-            'articulos' => $articulos,
-            'autor' => $autor
+            'articulos' => $articulos
         ]);
     }
     public function articulos($idArticulo){
@@ -61,7 +58,18 @@ class BlogController
         ->where('id', $idArticulo)
         ->firstOrFail();
 
-        return Inertia::render('Blog/Articulos', ['articulo' => $articulo]);
+        
+        
+    
+        // $articulosRelacionados = BlogArticulo::where('temas_relacionados', 'LIKE', '"codigo":"' . $articulo->temas_relacionados['codigo'] . '"')
+        $articulosRelacionados = BlogArticulo::where('temas_relacionados', 'LIKE', '%"codigo": "'. $articulo->temas_relacionados['codigo'] .'"%')
+        ->where('id', '!=', $idArticulo)  // Evita traer el mismo artículo.
+        ->limit(4)
+        ->get();
+
+        return Inertia::render('Blog/Articulos', ['articulo' => $articulo,
+                                                'articulosRelacionados' => $articulosRelacionados]);
+        
         
     }
     public function insertarComentario(Request $request)

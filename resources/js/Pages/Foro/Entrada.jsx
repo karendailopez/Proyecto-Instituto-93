@@ -2,13 +2,18 @@ import React , { useState } from 'react';
 import PublicLayout from '@/Layouts/PublicLayout';
 import SeccionComentario from "@/Layouts/Foro/SeccionComentario";
 import '../../../css/foro.css';
-import { useForm } from '@inertiajs/react';
+import { usePage , useForm } from '@inertiajs/react';
+
 
 export default function Detalle({ entrada }) {
+
+  const { auth } = usePage().props;
+  {console.log("hola")}
+  {console.log(auth)}
     /*Metodo para subir un comentario*/
       const { data, setData, post } = useForm({
         texto_html: '',
-        user_id: 3,
+        user_id: auth?.id,
         foro_entrada_id: entrada.id, 
         foro_comentario_id: '',
         estado_comentario_id: 1
@@ -18,7 +23,7 @@ export default function Detalle({ entrada }) {
 
         try{
             post(route('foro.insertarComentario'))
-            alert('Comenatario creado exitosamente')
+            
         }
         catch{
           alert('No se pudo subir el comentario')

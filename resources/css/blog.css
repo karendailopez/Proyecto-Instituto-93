@@ -182,3 +182,6 @@
   .btnenviar:active {
     transform: scale(0.95); /* Efecto de presión al hacer clic */
   }
+  .descripcion{
+    width: 80%;
+  }

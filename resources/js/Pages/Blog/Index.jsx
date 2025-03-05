@@ -5,13 +5,12 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../../../css/blog.css';
 
 
-export default function Index({grupos, ultimoArticulo, otrosArticulos, articulos,autor}){
+export default function Index({grupos, ultimoArticulo, otrosArticulos, articulos}){
     return (
       <div>
   <PublicLayout onlyNav={true} />
-          {console.log('AUTOR')}
-          {console.log(autor)}
-          <Blog  grupos={grupos} ultimoArticulo = {ultimoArticulo} otrosArticulos = {otrosArticulos} articulos = {articulos} autor = {autor}/>  
+          
+          <Blog  grupos={grupos} ultimoArticulo = {ultimoArticulo} otrosArticulos = {otrosArticulos} articulos = {articulos}  />  
         
          {/* Footer */}
           <footer className="bg-dark text-white text-center py-4 mt-5">

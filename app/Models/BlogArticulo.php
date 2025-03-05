@@ -37,8 +37,11 @@ class BlogArticulo extends Model
     {
         return $this->hasMany(Comentario::class);
     }
-    public function votos() : BelongsTo
+    public function votos() 
     {
-        return $this->belongsTo( BlogVoto::class, 'blog_articulo_id' );
+        return $this->hasMany( BlogVoto::class, 'blog_articulo_id' );
     }
+    protected $casts = [
+        'temas_relacionados' => 'array'
+    ];
 }

@@ -2,11 +2,17 @@ import React from "react";
 import { Link } from '@inertiajs/react';
 import '../../../css/blog.css';
 import MenuDesplegable from '../../Layouts/Blog/MenuDesplegable'
-const Blog = ({grupos, ultimoArticulo, otrosArticulos, articulos, autor}) => {
+import { usePage, useForm, router } from '@inertiajs/react';
 
+
+
+const Blog = ({grupos, ultimoArticulo, otrosArticulos, articulos}) => {
+
+  const { auth } = usePage().props;
+ 
   return (
     <>
-  
+      {console.log(auth)}
       {/* Header */}
       <header className="bg-primary text-white text-center py-4">
         <h1 className="display-4">BLOG - ISFT 93</h1>
@@ -79,7 +85,7 @@ const Blog = ({grupos, ultimoArticulo, otrosArticulos, articulos, autor}) => {
             <h3 className="h6 text-uppercase">
               Lo último - <span style={{ color: "#2d62a9"}}>Sistemas</span>
             </h3>
-
+           
               <ul className="list-unstyled">
               {articulos
                         .filter(articulo => articulo.categoria_nombre === 'Sistemas')

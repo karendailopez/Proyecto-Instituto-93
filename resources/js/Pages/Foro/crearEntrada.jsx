@@ -1,18 +1,22 @@
 import React from 'react';
 import { useState } from 'react';
-import { useForm } from '@inertiajs/react';
+import { usePage , useForm } from '@inertiajs/react';
 import PublicLayout from '@/Layouts/PublicLayout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import '../../../css/foro.css';
 
 export default function EntradasCrear() {
+
+    const { auth } = usePage().props;
+
+    
     const { data, setData, post } = useForm({
         titulo: '',
         texto_html: '',
         slug: '',
         etiquetas: [], 
-        user_id: 2,
+        user_id: auth?.id,
         estado_entrada_id: 1,
         cantidad_visitas: 10
     });

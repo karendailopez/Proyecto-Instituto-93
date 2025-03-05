@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
+
 
 class ForoController
 {
@@ -80,10 +82,14 @@ class ForoController
     }
     public function crearEntrada()
     {
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'Debes iniciar sesión para crear una entrada.');
+        }
         return Inertia::render('Foro/crearEntrada');
     }
     public function insertarEntrada(Request $request)
     {
+        
         // Crear una nueva entrada
         $entrada = new ForoEntrada();
         $entrada->titulo = $request->titulo;
@@ -98,15 +104,20 @@ class ForoController
     }
     public function insertarComentario(Request $request)
     {
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'Debes iniciar sesión para crear una entrada.');
+        }
+        
         // Crear nuevo comentario
         $comment = ForoComentario::create([
             'texto_html' => $request->texto_html, // Texto del comentario en HTML
-            'user_id' =>  $request->user_id, // Usuario autenticado
+            'user_id' =>   $request->user()->id, // Usuario autenticado
             'foro_entrada_id' => $request->foro_entrada_id, // ID de la entrada
             'foro_comentario_id' => $request->foro_comentario_id, // ID del comentario padre (nulo si es comentario principal)
            'estado_comentario_id' => $request->estado_comentario_id
         ]);
-
+        // Guardar un mensaje en la sesión
+        return redirect()->back()->with('success', 'Comentario creado exitosamente.');
                
        
     }
