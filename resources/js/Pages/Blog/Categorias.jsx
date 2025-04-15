@@ -45,15 +45,15 @@ export default function Categorias({ portada, articulos}) {
       <div className="row" style={
                             {margin: '50px'
                             }}>
-          {console.log( articulos)}
           {articulos.length > 0 ? (
             articulos.map((articulo) => (
               <article key={articulo.id} className="col-md-4 mb-4 card-size">
+                {articulo.portada_alta_url != null && (
               <img
                 src={articulo.portada_baja_url}
                 alt={`Portada de ${articulo.tituto}`}
                 className="img-fluid rounded mb-3"
-              />
+              />)}
               <h2 className="h5 text-primary">{articulo.tituto}</h2>
               <p className="text-muted">Publicado el {new Date(articulo.created_at).toLocaleDateString()}</p>
               <p>

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('foro_etiquetas', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion, 20'); 
+            $table->string('descripcion', 20); 
             $table->timestamps();
         });
     }

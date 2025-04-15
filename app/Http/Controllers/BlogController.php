@@ -9,6 +9,7 @@ use App\Models\BlogArticulo;
 use App\Models\Comentario;
 use App\Models\BlogCategoria;
 use App\Models\BlogVoto;
+use App\Models\BlogTemaRelacionado;
 
 class BlogController
 {
@@ -18,8 +19,7 @@ class BlogController
         $articuloss = BlogArticulo::latest()->take(4)->get()->toArray();
         $ultimoArticulo = $articuloss[0] ?? null; // Primer artículo
         $otrosArticulos = array_slice($articuloss, 1, 3); // Los otros 3 artículos
-        
-
+       
         // Obtener 3 artículos de Sistemas (ID 1)
         $sistemas = BlogArticulo::join('blog_categorias', 'blog_articulos.blog_categoria_id', '=', 'blog_categorias.id')
         ->join('blog_grupos', 'blog_categorias.blog_grupo_id', '=', 'blog_grupos.id')
@@ -58,14 +58,18 @@ class BlogController
         ->where('id', $idArticulo)
         ->firstOrFail();
 
-        
-        
-    
-        // $articulosRelacionados = BlogArticulo::where('temas_relacionados', 'LIKE', '"codigo":"' . $articulo->temas_relacionados['codigo'] . '"')
-        $articulosRelacionados = BlogArticulo::where('temas_relacionados', 'LIKE', '%"codigo": "'. $articulo->temas_relacionados['codigo'] .'"%')
-        ->where('id', '!=', $idArticulo)  // Evita traer el mismo artículo.
-        ->limit(4)
-        ->get();
+        $articulosRelacionados = null;
+
+        if($articulo->temas_relacionados !=  null){
+            $articulosRelacionados = BlogArticulo::where('id', '!=', $idArticulo)
+            ->where(function ($query) use ($articulo) {
+                foreach ($articulo->temas_relacionados as $tema) {
+                    $query->orWhere('temas_relacionados', 'LIKE', '%"codigo": "'. $tema['codigo'] .'"%');
+                }
+            })
+            ->limit(4)
+            ->get();
+        }
 
         return Inertia::render('Blog/Articulos', ['articulo' => $articulo,
                                                 'articulosRelacionados' => $articulosRelacionados]);
@@ -113,5 +117,25 @@ class BlogController
             BlogVoto::create($voteData);
         }
     }
+    public function tags(Request $request, $id)
+    {
+        
+        $descripcion = $request->query('descripcion'); // Obtiene la descripción desde la URL
+
+        // Buscamos el artículo original (aunque realmente no es necesario para la lógica)
+        $articulo = BlogArticulo::findOrFail($id);
+    
+        // Buscar artículos relacionados por el código del tema seleccionado
+        $articulosRelacionados = BlogArticulo::whereJsonContains('temas_relacionados', [['descripcion' => $descripcion]])
+            ->where('id', '!=', $id)
+            ->get();
+    
+        return Inertia::render('Blog/Tags', [
+            'descripcion' => $descripcion,
+            'articulosRelacionados' => $articulosRelacionados
+        ]);
+    }
+
+   
    
 }

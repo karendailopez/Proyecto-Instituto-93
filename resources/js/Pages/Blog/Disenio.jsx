@@ -54,11 +54,12 @@ const Blog = ({grupos, ultimoArticulo, otrosArticulos, articulos}) => {
             <section id="articles">
               {ultimoArticulo ? (
                 <article className="mb-4 card-principal">
-                <img
+                {ultimoArticulo.portada_alta_url != null && (
+                  <img 
                   src={ultimoArticulo.portada_baja_url}
                   alt={`Portada de ${ultimoArticulo.tituto}`}
-                  className="img-fluid rounded mb-3"
-                />
+                  className="img-fluid rounded mb-3 imagenPortada"
+                />)}
                 <h2 className="h5 text-primary">{ultimoArticulo.tituto}</h2>
                 <p className="text-muted">Publicado el {new Date(ultimoArticulo.created_at).toLocaleDateString()}</p>
                 <p>
@@ -92,12 +93,13 @@ const Blog = ({grupos, ultimoArticulo, otrosArticulos, articulos}) => {
                         .map((articulo) => (
                           <Link href={route('blog.articulos', articulo.id)}style={{ textDecoration: 'none' }} >
                           <article className="mb-4 d-flex align-items-start" id="noti">
+                          {articulo.portada_alta_url != null && (
                           <img
                             src={articulo.portada_baja_url}
                             alt={`Portada de ${articulo.tituto}`}
                             className="img-fluid rounded me-3"
                             style={{ width: "150px", height: "100px" }}
-                          />
+                          />)}
                           <div>
                           <h2
                           className="h5 text-primary"
@@ -130,12 +132,13 @@ const Blog = ({grupos, ultimoArticulo, otrosArticulos, articulos}) => {
                         .map((articulo) => (
                           <Link href={route('blog.articulos', articulo.id)}style={{ textDecoration: 'none' }}>
                           <article className="mb-4 d-flex align-items-start" id="noti">
+                          {articulo.portada_alta_url != null && (
                           <img
                             src={articulo.portada_baja_url}
                             alt={`Portada de ${articulo.tituto}`}
                             className="img-fluid rounded me-3"
                             style={{ width: "150px", height: "100px" }}
-                          />
+                          />)}
                           <div>
                           <h2
                           className="h5 text-primary"
@@ -163,15 +166,17 @@ const Blog = ({grupos, ultimoArticulo, otrosArticulos, articulos}) => {
           {otrosArticulos.length > 0 ? (
             otrosArticulos.map((articulo) => (
               <article key={articulo.id} className="col-md-4 mb-4 card-size">
-                
+                {articulo.portada_alta_url != null && (
               <img
                 src={articulo.portada_baja_url}
                 alt={`Portada de ${articulo.tituto}`}
                 className="img-fluid rounded mb-3"
-              />
+              />)}
               <h2 className="h5 text-primary">{articulo.tituto}</h2>
               <p className="text-muted">Publicado el {new Date(articulo.created_at).toLocaleDateString()}</p>
-              {/* <p className="text-muted">Publicado por: {autor.user.name}</p> */}
+              
+              
+              {/* <p className="text-muted">Publicado por: {articulo.user.name}</p> */}
               <p>
                 {articulo.descripcion.length > 200
                   ? `${articulo.descripcion.slice(0, 200)}...`

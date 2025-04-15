@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('foro_entradas', function (Blueprint $table) {
             $table->id();
             $table->string('titulo', 50); 
-            $table->string('texto_html, 500'); 
+            $table->string('texto_html', 500); 
             $table->unsignedBigInteger('user_id'); 
-            $table->string('etiquetas, 20')->nullable();
-            $table->string('slug, 30'); 
+            $table->string('etiquetas', 20)->nullable();
+            $table->string('slug', 30); 
             $table->unsignedBigInteger('estado_entrada_id'); 
             $table->integer('cantidad_visitas'); 
             $table->timestamps(); 

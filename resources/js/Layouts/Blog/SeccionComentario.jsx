@@ -1,6 +1,7 @@
-const CommentCard = ({ comment }) => {
-    
+import '../../../css/foro.css';
 
+const CommentCard = ({ comment }) => {
+   
     return (
         <div className={`card 'ml-8'`} style={{
             margin:'5%',
@@ -23,6 +24,7 @@ const CommentCard = ({ comment }) => {
                     Comentario del usuario: <span style={{ color: '#2e75df' }}>{comment.usuario ? comment.usuario.name : 'Desconocido'}</span>
                 </h4>
                 <p>{comment.mensaje}</p>
+              
             </div>
         </div>
     );

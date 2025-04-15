@@ -34,6 +34,8 @@ Route::post('/foro/insertarEntrada',[App\Http\Controllers\ForoController::class,
 Route::post('/foro/insertarComentario',[App\Http\Controllers\ForoController::class,'insertarComentario'])->name('foro.insertarComentario');
 Route::post('/foro/votar/{idEntrada}',[App\Http\Controllers\ForoController::class,'votar'])->name('foro.votar');
 Route::get('/foro/entrada/{idEntrada}', [App\Http\Controllers\ForoController::class, 'entrada'])->name('foro.entrada');
+Route::post('/foro/votarComent/{idComentario}',[App\Http\Controllers\ForoController::class,'votarComent'])->name('foro.votarComent');
+Route::post('/foro/denunciar', [App\Http\Controllers\ForoController::class, 'denunciar'])->name('foro.denunciar');
 
 /*BLOG*/
 Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name('blog');
@@ -41,6 +43,7 @@ Route::get('/blog/articulo/{idArticulo}', [\App\Http\Controllers\BlogController:
 Route::post('/blog/insertarComentario',[App\Http\Controllers\BlogController::class,'insertarComentario'])->name('blog.insertarComentario');
 Route::get('/blog/categorias/{idCategoria}', [\App\Http\Controllers\BlogController::class, 'categorias'])->name('blog.categorias');
 Route::post('/blog/votar/{idArticulo}',[App\Http\Controllers\BlogController::class,'votar'])->name('blog.votar');
+Route::get('/blog/temas/{id}', [\App\Http\Controllers\BlogController::class, 'tags'])->name('blog.tema');
 
 Route::get('/verificar-alumno/{email}', [\App\Http\Controllers\InscripcionController::class, 'verificar'])->name('verificar-alumno');
 Route::post('/inscripcion', [\App\Http\Controllers\InscripcionController::class, 'store'])->name('inscripcion.store');

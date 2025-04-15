@@ -16,7 +16,7 @@ export default function EntradasCrear() {
         texto_html: '',
         slug: '',
         etiquetas: [], 
-        user_id: auth?.id,
+        user_id: 3,
         estado_entrada_id: 1,
         cantidad_visitas: 10
     });
@@ -26,6 +26,8 @@ export default function EntradasCrear() {
         try{
             post(route('foro.insertarEntrada'))
             alert('Entrada ingresada exitosamente')
+            
+           
         }
         catch{
             console.log('Error')

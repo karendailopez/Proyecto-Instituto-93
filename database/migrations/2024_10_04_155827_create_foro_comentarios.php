@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('foro_comentarios', function (Blueprint $table) {
             $table->id();
-            $table->string('texto_html, 500'); 
+            $table->string('texto_html', 500); 
             $table->unsignedBigInteger('user_id'); 
-            $table->unsignedBiInterger('foro_entrada_id');
+            $table->unsignedBigInterger('foro_entrada_id');
             $table->unsignedBigInteger('foro_comentario_id'); 
             $table->unsignedBigInteger('estado_comentario_id'); 
             $table->timestamps();

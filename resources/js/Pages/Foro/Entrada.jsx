@@ -3,20 +3,22 @@ import PublicLayout from '@/Layouts/PublicLayout';
 import SeccionComentario from "@/Layouts/Foro/SeccionComentario";
 import '../../../css/foro.css';
 import { usePage , useForm } from '@inertiajs/react';
+import { router } from "@inertiajs/react";
 
 
 export default function Detalle({ entrada }) {
 
-  const { auth } = usePage().props;
-  {console.log("hola")}
-  {console.log(auth)}
+  const [showModal, setShowModal] = useState(false); // Estado para abrir/cerrar el modal
+  const [motivo, setMotivo] = useState(""); // Estado para capturar el motivo
+
+
     /*Metodo para subir un comentario*/
       const { data, setData, post } = useForm({
         texto_html: '',
-        user_id: auth?.id,
+        user_id: 3,
         foro_entrada_id: entrada.id, 
-        foro_comentario_id: '',
-        estado_comentario_id: 1
+        estado_comentario_id : 1
+        
     });
     const Submit = (event) => {
         event.preventDefault()
@@ -45,8 +47,29 @@ export default function Detalle({ entrada }) {
           }
       }
 
+      const denuncia = () => {
+        router.post(route("foro.denunciar"), {
+            user_id: 3, 
+            foro_entrada_id: entrada.id, 
+            foro_comentario_id: null,
+            motivo: motivo, // Motivo ingresado por el usuario
+        });
+
+        setShowModal(false); // Cerrar el modal después de enviar la denuncia
+        setMotivo(""); // Limpiar el input
+    };
+
+
+    const handleReply = (respuestaId) => {
+        
+            form.setData('foro_comentario_id', respuestaId); // Establece el ID del comentario al que se está respondiendo
+            modalCommentRef.current.show(); // Mostrar modal
+        
+      };
+    
+      
     const [comments] = useState(entrada.comentarios || []);
-    console.log(entrada)
+   
     return (
       
         <div className="flex flex-col items-center px-5 w-full">
@@ -64,18 +87,35 @@ export default function Detalle({ entrada }) {
                 {/* <!-- Columna izquierda --> */}
                 <div className="flex flex-col items-start">
                     <a href="#" className="btn_votar mt-2" onClick={() => darLike(entrada.id)}>
-                    <i className="fa fa-thumbs-up megusta" aria-hidden="true"></i> Me gusta
+                    <i className="fa fa-thumbs-up megusta" aria-hidden="true"> {entrada.votos ? entrada.votos.length : 0}    </i> Me gusta
                     </a>
-                    <span className="text-gray text-xs">
-                        Me gustas: {entrada.votos ? entrada.votos.length : 0}    
-                    </span>
+                   
                     
                 </div>
 
                 {/* <!-- Columna derecha --> */}
-                <span className="text-red text-xs self-start">
-                    Denuncias: {entrada.denuncias ? entrada.denuncias.length : 0}
-                </span>
+                <div className="text-red text-xs self-start">
+                  <btn className="btn_votar mt-2 denunciar" onClick={() => setShowModal(true)}>
+                      Denunciar
+                  </btn>
+              </div>
+              {/* Modal */}
+              {showModal && (
+                  <div className="modal">
+                      <div className="modal-content">
+                          <h3>Denunciar Entrada</h3>
+                          <textarea
+                              placeholder="Escribe tu denuncia aquí..."
+                              value={motivo}
+                              onChange={(e) => setMotivo(e.target.value)}
+                          />
+                          <div className="modal-buttons">
+                              <button onClick={denuncia} className="btn-enviar">Enviar</button>
+                              <button onClick={() => setShowModal(false)} className="btn-cerrar">Cancelar</button>
+                          </div>
+                      </div>
+                  </div>
+              )}
           </div>
               
                            
@@ -86,8 +126,12 @@ export default function Detalle({ entrada }) {
           <div className="mt-20">
                     <h2 className="text-2xl font-bold m-4 text-center">Comentarios</h2>
                     <SeccionComentario
+                        post={post}
                         comments={comments} 
+                        onReply={handleReply} 
+                        
                     />
+                   
           </div>
           <form className='formulario' onSubmit={Submit}>
           <div className="mb-3 w-full max-w-screen-lg">

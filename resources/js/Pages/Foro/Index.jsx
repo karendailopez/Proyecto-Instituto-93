@@ -76,8 +76,7 @@ export default function Index({ entradas }) {
                                         
                                     </div>
 
-                                    {/* <!-- Columna derecha --> */}
-                                    <span className="text-red text-xs self-start">Denuncias: {entrada.denuncias.length}</span>
+                                    
                                     </div>
                             </div>
                     

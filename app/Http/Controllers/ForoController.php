@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
-use Illuminate\Support\Facades\Auth;
+
 
 
 class ForoController
@@ -59,15 +59,16 @@ class ForoController
 
     public function votar(Request $request, $idEntrada)
     {
+        //dd($request);
         // Preparar los datos del voto
         $voteData = [
-            'user_id' => $request->user_id,
+            'user_id' => $request->user()->id,
             'foro_entrada_id' => $idEntrada,
             'foro_comentario_id' => 1
         ];
 
         // Caso de entrada
-        $vote = ForoVoto::where('user_id', $request->user_id)
+        $vote = ForoVoto::where('user_id', $request->user()->id)
         ->where('foro_entrada_id', $idEntrada)
         ->first();
 
@@ -80,38 +81,57 @@ class ForoController
             ForoVoto::create($voteData);
         }
     }
+    public function votarComent(Request $request, $idComentario)
+    {
+       
+        // Preparar los datos del voto
+        $voteData = [
+            'user_id' => $request->user()->id,
+            'foro_comentario_id' => $idComentario,
+            'foro_entrada_id' => $request->foro_entrada_id
+        ];
+
+        // Caso de entrada
+        $vote = ForoVoto::where('user_id', $request->user()->id)
+        ->where('foro_comentario_id', $idComentario)
+        ->first();
+
+        if ($vote) {
+            $vote->delete();
+        }
+        else
+        {
+            // Crear el voto para la entrada
+            ForoVoto::create($voteData);
+        }
+        return redirect()->route('foro.entrada', ['idEntrada' => $request->foro_entrada_id]);
+    }
     public function crearEntrada()
     {
-        if (!auth()->check()) {
-            return redirect()->route('login')->with('error', 'Debes iniciar sesión para crear una entrada.');
-        }
         return Inertia::render('Foro/crearEntrada');
     }
     public function insertarEntrada(Request $request)
     {
-        
+       
         // Crear una nueva entrada
         $entrada = new ForoEntrada();
         $entrada->titulo = $request->titulo;
         $entrada->slug = Str::slug($request->titulo); // Genera el slug a partir del título
         $entrada->texto_html = $request->texto_html;
-        $entrada->user_id = $request->user_id;
+        $entrada->user_id = $request->user()->id;
         $entrada->etiquetas = json_encode($request->etiquetas);//gurado las etiquetas en gformato JSON
         $entrada->estado_entrada_id = $request->estado_entrada_id;
         $entrada->cantidad_visitas = $request->cantidad_visitas;
         $entrada->save();
-       
+        return redirect()->route('foro');
     }
     public function insertarComentario(Request $request)
     {
-        if (!auth()->check()) {
-            return redirect()->route('login')->with('error', 'Debes iniciar sesión para crear una entrada.');
-        }
         
         // Crear nuevo comentario
         $comment = ForoComentario::create([
             'texto_html' => $request->texto_html, // Texto del comentario en HTML
-            'user_id' =>   $request->user()->id, // Usuario autenticado
+            'user_id' => $request->user()->id,// Usuario autenticado
             'foro_entrada_id' => $request->foro_entrada_id, // ID de la entrada
             'foro_comentario_id' => $request->foro_comentario_id, // ID del comentario padre (nulo si es comentario principal)
            'estado_comentario_id' => $request->estado_comentario_id
@@ -134,6 +154,23 @@ class ForoController
         ->firstOrFail();
 
         return Inertia::render('Foro/Entrada', ['entrada' => $entrada]);
+    }
+    public function denunciar(Request $request)
+{
+    $request->validate([
+        'foro_entrada_id' => 'required|exists:foro_entradas,id',
+        'motivo' => 'required|string|max:500',
+    ]);
+
+    // Crear la denuncia
+    ForoDenuncia::create([
+        'user_id' => $request->user()->id, // Siempre es 3
+        'foro_entrada_id' => $request->foro_entrada_id,
+        'foro_comentario_id' => null, // No se usa en este caso
+        'motivo' => $request->motivo,
+    ]);
+
+    return back()->with('success', 'Denuncia enviada correctamente.');
     }
     
 }

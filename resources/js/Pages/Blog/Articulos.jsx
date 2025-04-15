@@ -43,8 +43,6 @@ export default function Detalle({ articulo, articulosRelacionados}) {
         }
         
     
-        let temasRelacionadoss = articulo.temas_relacionados;
-          console.log(articulo)
           return (
             <>
                 <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
@@ -71,53 +69,96 @@ export default function Detalle({ articulo, articulosRelacionados}) {
                                     <p className="text-gray-600 mt-2" style={{ marginTop: '20px', marginLeft: '75px', color: '#3f68ac' }}>
                                         <span className="font-semibold">{articulo.user.name}</span> - {new Date(articulo.created_at).toLocaleDateString()}
                                     </p>
-                                    <img src={articulo.portada_alta_url} alt="Imagen destacada" className="w-full h-64 object-cover rounded-lg mt-4 imagen"/>
+                                    {articulo.portada_alta_url != null && (
+                                        <img 
+                                            src={articulo.portada_alta_url} 
+                                            alt="Imagen destacada" 
+                                            className="w-full h-64 object-cover rounded-lg mt-4 imagen" 
+                                        />
+                                    )}
+
+                                    
                                 <div className="row">
                                     <div className="mt-6 text-gray-800 space-y-4 descripcion">
                                         <p>{articulo.descripcion}</p>
                                     </div>
             
 
+                                   
                                     {/* Sidebar */}
                                     <aside className="col-md-4">
-                                    <div className="container mt-5">
-                                        
-                                            <h3 className="h6 text-uppercase"><span style={{ color: "#2d62a9"}}>Temas Relacionados</span>
+                                        <div className="container mt-5">
+                                            <h3 className="h6 text-uppercase">
+                                                <span style={{ color: "#2d62a9" }}>Te puede interesar</span>
                                             </h3>
-                                        
-                                            <ul className="list-unstyled">
-                                            {articulosRelacionados
-                                                        .map((articulos) => (
-                                                        <Link href={route('blog.articulos', articulos.id)}style={{ textDecoration: 'none' }} >
-                                                        <article className="mb-4 d-flex align-items-start" id="noti">
-                                                        <img
-                                                            src={articulos.portada_baja_url}
-                                                            alt={`Portada de ${articulos.tituto}`}
-                                                            className="img-fluid rounded me-3"
-                                                            style={{ width: "150px", height: "100px" }}
-                                                        />
-                                                        <div>
-                                                        <h2
-                                                        className="h5 text-primary"
-                                                        id="titulo-noti"
-                                                        style={{ fontSize: "16px" }}
+
+                                            {articulosRelacionados != null && articulosRelacionados.length > 0 ? (
+                                                <ul className="list-unstyled">
+                                                    {articulosRelacionados.map((articulo) => (
+                                                        <Link 
+                                                            key={articulo.id} 
+                                                            href={route('blog.articulos', articulo.id)} 
+                                                            style={{ textDecoration: 'none' }}
                                                         >
-                                                        {articulos.tituto}
-                                                        </h2>
-                                                            <p className="text-muted">Publicado el {new Date(articulos.created_at).toLocaleDateString()}</p>
-                                                        </div>
-                                                        </article>
+                                                            <article className="mb-4 d-flex align-items-start" id="noti">
+                                                            {articulo.portada_alta_url != null && (
+                                                                <img
+                                                                    src={articulo.portada_baja_url}
+                                                                    alt={`Portada de ${articulo.tituto}`}
+                                                                    className="img-fluid rounded me-3"
+                                                                    style={{ width: "150px", height: "100px" }}
+                                                                />)}
+                                                                <div>
+                                                                    <h2
+                                                                        className="h5 text-primary"
+                                                                        id="titulo-noti"
+                                                                        style={{ fontSize: "16px" }}
+                                                                    >
+                                                                        {articulo.tituto}
+                                                                    </h2>
+                                                                    <p className="text-muted">
+                                                                        Publicado el {new Date(articulo.created_at).toLocaleDateString()}
+                                                                    </p>
+                                                                </div>
+                                                            </article>
                                                         </Link>
-                                                        
-                                                ))}
-                                            
-                                            
-                                            </ul>
-                                            </div>
-                                    </aside>  
+                                                    ))}
+                                                </ul>
+                                            ) : (
+                                                <p className="text-muted">No hay articulos relacionados</p>
+                                            )}
+                                        </div>
+                                    </aside>
+
+
             </div>
                                 <hr />
-        
+                                {/* TAGS */}
+                                 <div className="container mt-5">
+                                            <h3 className="h6 text-uppercase">
+                                                <span style={{ color: "#2d62a9" }}>Tags Relacionados</span>
+                                            </h3>
+                                            
+                                            {articulo.temas_relacionados != null && articulo.temas_relacionados.length > 0 ? (
+                                            <ul className="list-unstyled d-flex gap-2 flex-wrap">
+                                                {articulo.temas_relacionados.map((tema) => (
+                                                    <Link 
+                                                        key={tema.id} 
+                                                        href={route('blog.tema', { id: tema.id, descripcion: tema.descripcion })} 
+                                                        className="px-3 py-1 border rounded text-decoration-none"
+                                                        style={{ background: "#f8f9fa", color: "#007bff" }}
+                                                    >
+                                                        {tema.descripcion}
+                                                    </Link>
+                                                ))}
+                                            </ul>
+                                        ) : (
+                                            <p className="text-muted">No hay temas relacionados</p>
+                                        )}
+
+                                        </div> 
+                                             
+                                <hr/>
                                 <div className="p-5 py-4 flex justify-between items-start footer-entrada">
                                     <div className="flex flex-col items-start">
                                         <a href="#" className="btn_votar mt-2" onClick={() => darLike(articulo.id)}>
